@@ -24,8 +24,8 @@
           }
         ],
         "styles": [
-          "apps/gdp-flow/src/styles.scss",
-          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/gdp-flow/src/styles.scss"
         ],
         "stylePreprocessorOptions": {
           "includePaths": [
