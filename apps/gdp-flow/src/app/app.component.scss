@@ -9,15 +9,18 @@
 
     &-content {
         display: grid;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: 1fr;
 
         &__header {
-           
         }
     
         &__main {
             background-color: var(--background-color);
             padding: 2.8rem 2.5rem; //Validar esse padding geral
+        }
+
+        &--is-user-logged {
+            grid-template-rows: auto 1fr;
         }
     }
 

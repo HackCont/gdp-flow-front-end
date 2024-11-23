@@ -7,7 +7,7 @@
     }
 
     
-    <div class="app-content">
+    <div class="app-content" [ngClass]="{'app-content--is-user-logged': routesWithLayout.includes(router.url)}">
         @if (routesWithLayout.includes(router.url)) {
             <div class="app-content__header">
                 <app-header></app-header>
