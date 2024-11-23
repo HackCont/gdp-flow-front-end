@@ -1,3 +1,10 @@
+// !OBS: Alguns styles serão necessário utilizar ng-deep/!important porque é bem ruimzinho de conseguir acessar as classes do Angular Material. Eu tentei deixar os nossos styles na frente no project.json, a fim de sobrescrever os styles default do Angular Material, mas mesmo assim não rolou. #rever
+
 mat-form-field {
     width: 100%;
+}
+
+// Reseta um padding padrão que os components de <mat-error> possuem.
+.mat-mdc-form-field-error-wrapper {
+    padding: 0 !important;
 }

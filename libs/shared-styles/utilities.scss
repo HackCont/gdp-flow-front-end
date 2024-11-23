@@ -1,3 +1,5 @@
+$count: (1, 2, 3, 4, 5);
+
 // CLASSES GRID.
 .d-grid {
     display: grid;
@@ -25,8 +27,7 @@
 }
 
 // Margins & Paddings;
-$spaceAmounts: (1, 2, 3, 4, 5);
-@each $space in $spaceAmounts {
+@each $space in $count {
     .margin-#{$space} {
         margin: #{$space}rem;
     }
@@ -52,9 +53,13 @@ $spaceAmounts: (1, 2, 3, 4, 5);
     }
 }
 
-$gaps: (1, 2, 3, 4, 5);
-@each $gap in $gaps {
+@each $gap in $count {
     .gap-#{$gap} {
         gap: #{$gap}rem;
     }
+}
+
+// OUTROS.
+.w-100 {
+    width: 100%;
 }
