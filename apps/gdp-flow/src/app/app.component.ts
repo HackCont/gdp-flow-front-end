@@ -12,6 +12,6 @@ import { NgClass } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  protected routesWithLayout = ['/perfil']
+  protected routesWithLayout = ['/perfil', '/timeline', '/pdi', '/modo-apresentacao']
   protected router = inject(Router);
 }

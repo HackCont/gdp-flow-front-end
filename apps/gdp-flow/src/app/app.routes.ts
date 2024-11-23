@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
+import { TimelineComponent } from '../app/pages/timeline/timeline.component';
 
 export const appRoutes: Route[] = [
     {
@@ -14,5 +15,9 @@ export const appRoutes: Route[] = [
     {
         path: 'perfil',
         loadComponent: () => import('../app/pages/profile/profile.component').then(c => ProfileComponent)
+    },
+    {
+        path: 'timeline',
+        loadComponent: () => import('../app/pages/timeline/timeline.component').then(c => TimelineComponent)
     }
 ];
