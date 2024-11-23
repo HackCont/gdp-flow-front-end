@@ -1,7 +1,24 @@
 .app {
     height: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+   
 
-    &-main {
-        height: 100%;
+    &-sidebar {
+
+    }
+
+    &-content {
+        display: grid;
+        grid-template-rows: auto 1fr;
+
+        &__header {
+           
+        }
+    
+        &__main {
+            background-color: var(--background-color);
+            padding: 2.8rem 2.5rem; //Validar esse padding geral
+        }
     }
 }

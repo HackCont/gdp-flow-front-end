@@ -6,8 +6,17 @@
         </div>
     }
 
-    <div class="app-main">
-        <router-outlet></router-outlet>
+    
+    <div class="app-content">
+        @if (routesWithLayout.includes(router.url)) {
+            <div class="app-content__header">
+                <app-header></app-header>
+            </div>
+        }
+
+        <div class="app-content__main">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 
 </div>
