@@ -12,5 +12,6 @@ export class AuthTemplateComponent {
 
   @Input({required: true}) bannerURL!: string;
   @Input({required: true}) title!: string;
+  @Input({required: true}) message!: string;
 
 }
