@@ -29,4 +29,10 @@ button {
     background: transparent;
     outline: none;
     border: none;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+        transform: scale(1.01);
+    }
 }

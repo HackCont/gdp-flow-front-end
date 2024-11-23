@@ -1,18 +1,23 @@
 <div class="template d-grid">
 
-    <div class="template-banner">
-        <img [src]="bannerURL" alt="Banner login">
-    </div>
-
     <div class="template-form d-flex flex-column items-center">
 
-        <h2>{{title}}</h2>
+        <div class="template-form__header d-flex flex-column items-center">
+            <div class="template-form__logo">
+                <!-- <img src="" alt=""> -->
+                <img src="assets/logo.png" alt="GDP Flow logo">
+            </div>
+
+            <div class="template-form__messages d-flex flex-column items-center">
+                <h3>{{title}}</h3>
+                <span>{{message}}</span>
+            </div>
+        </div>
 
         <ng-content></ng-content>
-
     </div>
 
-    <div class="bubble bubble--1"></div>
-    <div class="bubble bubble--2"></div>
-
+    <div class="template-banner">
+        <!-- <img src="assets/banner-login.png" alt="Banner login"> -->
+    </div>
 </div>

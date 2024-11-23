@@ -18,6 +18,10 @@ $count: (1, 2, 3, 4, 5);
     align-items: center;
 }
 
+.items-end {
+    align-items: end;
+}
+
 .justify-center {
     justify-content: center;
 }
@@ -62,4 +66,10 @@ $count: (1, 2, 3, 4, 5);
 // OUTROS.
 .w-100 {
     width: 100%;
+}
+
+// Mensagem de erro para os inputs.
+.input-error-msg {
+    color: #f78278;
+    font-size: 1.4rem;
 }
