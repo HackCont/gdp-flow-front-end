@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { SidebarComponent } from "./ui/sidebar/sidebar.component";
 
 @Component({
@@ -10,5 +10,6 @@ import { SidebarComponent } from "./ui/sidebar/sidebar.component";
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'gdp-flow';
+  protected routesWithLayout = ['/perfil']
+  protected router = inject(Router);
 }
