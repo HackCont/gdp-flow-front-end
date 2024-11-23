@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    background-color: var(--surface-color);
+    border-right: .1rem solid var(--border-color);
+    width: 30rem;
+    height: 100%;
+}
+
+.sidebar {
+    &-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 6.5rem;
+    }
+
+    &-content {
+        padding: 0 2rem;
+        margin-top: 2.8rem;
+
+        &__menu {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        &__item {
+
+        }
+    }
+}
