@@ -1,5 +1,21 @@
 :root {
-    --primary-color: #a6cdfd;
-    --text-color: #444;
-    --light-gray-color: #818388;
+    // Cores principais
+    --primary-color: #444;
+    --secundary-color: #777;
+    --accent-color: red; //Decidir cor para destaques (exemplo: alertas)
+    
+    //Fundo
+    --background-color: #F5F6F8;
+    --surface-color: #FFF; //Fundo de elementos como cards ou caixas
+    
+    //Bordas
+    --border-color: #E4E5E9;
+
+    //Text colors
+    --text-color: var(--primary-color);
+    --text-color-gray: var(--secundary-color);
+    --text-color-gray-input: #999;
+
+    --hover-color: #015389;
+    // --light-gray-color: #818388;
 }
