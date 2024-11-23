@@ -14,6 +14,10 @@ body {
     color: var(--text-color);
 }
 
+ul, li {
+    list-style: none;
+}
+
 html, body {
     width: 100%;
     height: 100%;
