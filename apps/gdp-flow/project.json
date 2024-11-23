@@ -17,6 +17,7 @@
         "tsConfig": "apps/gdp-flow/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          "apps/gdp-flow/src/assets",
           {
             "glob": "**/*",
             "input": "apps/gdp-flow/public"
