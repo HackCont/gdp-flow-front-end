@@ -5,10 +5,15 @@
 </div>
 
 <div class="sidebar-content">
-    <label>menu</label>
+    <label class="sidebar-content__label">menu</label>
 
     <ul class="sidebar-content__menu">
-        <li class="sidebar-content__item">Perfil do usuário</li>
-        <li class="sidebar-content__item">Perfil do usuário</li>
+        
+        @for (item of sidebarMenu; track $index) {
+            <li class="sidebar-content__item" [ngClass]="{'sidebar-content__item--selected': item.selected}">
+                <ng-icon [name]="item.icon"></ng-icon>
+                <span class="sidebar-content__txt">{{ item.txt }}</span>
+            </li>
+        }
     </ul>
 </div>

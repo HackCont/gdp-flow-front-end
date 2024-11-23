@@ -18,15 +18,45 @@
         padding: 0 2rem;
         margin-top: 2.8rem;
 
+        &__label {
+            margin-left: 1.4rem;
+            color: var(--txt-color-gray);
+        }
+
         &__menu {
-            margin-top: 2rem;
+            margin-top: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.2rem;
         }
 
         &__item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: 0 1.2rem;
+            height: 4rem;
+            transition: .3s ease;
+            cursor: pointer;
+            border-radius: .8rem;
+            border: .2rem solid transparent;
+            color: var(--txt-color-gray);
 
+            &:hover {
+                border: .2rem solid var(--hover-color);
+            }
+
+            &--selected {
+                // border: .2rem solid var(--hover-color);
+                background-color: var(--primary-color);
+
+                color: #fff;
+            }
+        }
+
+        &__txt, ng-icon {
+            font-size: 1.8rem;
+            font-weight: 500;
         }
     }
 }
