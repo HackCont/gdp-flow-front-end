@@ -1,6 +1,44 @@
 <app-auth-template bannerURL="assets/banner-login.svg" title="Entre no GDP Flow">
 
-    <form class="w-100 d-flex flex-column gap-1" [formGroup]="form">
+    <div class="login w-100 gap-2">
+
+        <form class="login__form d-flex flex-column w-100" [formGroup]="form">
+    
+            <div class="login__form-group">
+                <span class="login__form-label">E-mail</span>
+                <input class="login__form-input" type="text" placeholder="exemplo@gmail.com" formControlName="email">
+
+                @if (form.controls['email'].touched) {
+
+                    @if (form.controls['email'].hasError('required')) {
+                        <p class="input-error-msg">E-mail obrigatório.</p>
+                    }
+                    @if (form.controls['email'].hasError('email')) {
+                        <p class="input-error-msg">E-mail inválido.</p>
+                    }
+
+                }
+            </div>
+    
+            <div class="login__form-group">
+                <span class="login__form-label">Senha</span>
+                <input class="login__form-input" type="text" placeholder="**********" formControlName="password">
+
+                @if (form.controls['password'].hasError('required') && form.controls['password'].touched) {
+                    <p class="input-error-msg">Senha obrigatório.</p>
+                }
+            </div>
+    
+        </form>
+
+        <div class="login__actions d-flex flex-column items-end">
+            <button class="w-100" (click)="handleLogin()">Log in</button>
+            <p>Não tem conta? <span>Cadastre-se!</span></p>
+        </div>
+    </div>
+    
+    
+    <!-- <form class="w-100 d-flex flex-column gap-1" [formGroup]="form">
         <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
             <input matInput type="text" formControlName="email">
@@ -36,6 +74,6 @@
     <div class="login-form__actions d-flex flex-column gap-1">
         <button class="login__submit-btn" (click)="handleSubmitForm()">ENTRAR</button>
         <button class="login__register-btn d-flex justfiy-start" (click)="navigateToSignUpPage()">Cadastre-se</button>
-    </div>
+    </div> -->
 
 </app-auth-template>

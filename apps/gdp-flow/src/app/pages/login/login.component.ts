@@ -20,12 +20,14 @@ export class LoginComponent implements OnInit {
 
   protected form!: FormGroup;
   protected showPassword = false;
+  protected showErrors = false;
 
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
   ngOnInit(): void {
     this.initForm();
+
   }
 
   private initForm = () => {
@@ -39,9 +41,14 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  protected handleSubmitForm = () => {
+  protected handleLogin = () => {
+
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
     const rawValue = this.form.getRawValue();
-    
     alert(JSON.stringify(rawValue));
   }
 
