@@ -1,4 +1,4 @@
-<div class="app" [ngClass]="{'app--is-user-logged': routesWithLayout.includes(router.url)}">
+<div class="app" [ngStyle]="{'grid-template-columns': !routesWithLayout.includes(router.url) ? '1fr' : ''}">
 
     @if (routesWithLayout.includes(router.url)) {
         <div class="app-sidebar">
@@ -7,14 +7,14 @@
     }
 
     
-    <div class="app-content" [ngClass]="{'app-content--is-user-logged': routesWithLayout.includes(router.url)}">
+    <div class="app-content" [ngStyle]="{'grid-template-rows': !routesWithLayout.includes(router.url) ? '1fr' : ''}">
         @if (routesWithLayout.includes(router.url)) {
             <div class="app-content__header">
                 <app-header></app-header>
             </div>
         }
 
-        <div class="app-content__main">
+        <div class="app-content__main" [ngStyle]="{'padding': !routesWithLayout.includes(router.url) ? '0' : ''}">
             <router-outlet></router-outlet>
         </div>
     </div>
