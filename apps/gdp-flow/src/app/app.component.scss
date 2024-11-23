@@ -1,7 +1,7 @@
 .app {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
 
     &-sidebar {
 
@@ -9,27 +9,15 @@
 
     &-content {
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-rows: auto 1fr;
 
         &__header {
+            
         }
     
         &__main {
+            padding: 2.8rem 2.5rem; //Validar esse padding geral
             background-color: var(--background-color);
-        }
-    }
-
-    &--is-user-logged {
-        grid-template-rows: auto 1fr;
-
-        .app {
-            &-content {
-                grid-template-columns: auto 1fr;
-
-                &__main {
-                        padding: 2.8rem 2.5rem; //Validar esse padding geral
-                }
-            }
         }
     }
 }
