@@ -7,11 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthTemplateComponent } from "../../ui/auth-template/auth-template.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, AuthTemplateComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
