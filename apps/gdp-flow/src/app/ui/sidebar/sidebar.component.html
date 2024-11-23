@@ -10,7 +10,7 @@
     <ul class="sidebar-content__menu">
         
         @for (item of sidebarMenu; track $index) {
-            <li class="sidebar-content__item" [ngClass]="{'sidebar-content__item--selected': item.selected}">
+            <li class="sidebar-content__item" [ngClass]="{'sidebar-content__item--selected': item.rota === this.router.url}" [routerLink]="item.rota">
                 <ng-icon [name]="item.icon"></ng-icon>
                 <span class="sidebar-content__txt">{{ item.txt }}</span>
             </li>

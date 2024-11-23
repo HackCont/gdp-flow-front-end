@@ -3,12 +3,12 @@ import { CommonModule, NgClass } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { ionAnalyticsOutline, ionPersonOutline, ionPieChartOutline, ionPlayCircleOutline } from '@ng-icons/ionicons';
 import { SidebarMenu } from './sidebar';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, NgIconComponent, NgClass],
+  imports: [CommonModule, RouterLink, NgIconComponent, NgClass],
   providers: [provideIcons({ ionPersonOutline, ionAnalyticsOutline, ionPieChartOutline, ionPlayCircleOutline })],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -20,22 +20,22 @@ export class SidebarComponent {
     {
       icon: 'ionPersonOutline',
       txt: 'Perfil do usuário',
-      selected: this.router.url === '/perfil' ? true : false
+      rota: '/perfil'
     },
     {
       icon: 'ionAnalyticsOutline',
       txt: 'Linha do tempo',
-      selected: false
+      rota: '/timeline'
     },
     {
       icon: 'ionPieChartOutline',
       txt: 'PDI',
-      selected: false
+      rota: ''
     },
     {
       icon: 'ionPlayCircleOutline',
       txt: 'Modo de apresentação',
-      selected: false
+      rota: ''
     },
   ];
 
