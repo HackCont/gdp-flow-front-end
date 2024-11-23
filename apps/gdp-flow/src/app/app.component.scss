@@ -1,8 +1,7 @@
 .app {
     height: 100%;
     display: grid;
-    grid-template-columns: auto 1fr;
-   
+    grid-template-columns: 1fr;
 
     &-sidebar {
 
@@ -20,5 +19,9 @@
             background-color: var(--background-color);
             padding: 2.8rem 2.5rem; //Validar esse padding geral
         }
+    }
+
+    &--is-user-logged {
+        grid-template-columns: auto 1fr;
     }
 }
