@@ -20,6 +20,10 @@
     justify-content: center;
 }
 
+.justify-start {
+    justify-content: flex-start;
+}
+
 // Margins & Paddings;
 $spaceAmounts: (1, 2, 3, 4, 5);
 @each $space in $spaceAmounts {

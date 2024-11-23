@@ -1,2 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@use 'shared-styles/reset'
+@use 'shared-styles/reset';
+@use 'shared-styles/utilities';
+@use 'shared-styles/angular-material';
+@use 'shared-styles/variables';
