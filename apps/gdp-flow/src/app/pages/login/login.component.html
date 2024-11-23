@@ -8,22 +8,42 @@
 
         <h2>Entre no GDP Flow</h2>
 
-        <form action="" class="d-flex flex-column gap-1">
+        <form class="d-flex flex-column gap-1" [formGroup]="form">
             <mat-form-field appearance="outline">
                 <mat-label>E-mail</mat-label>
-                <input matInput type="text">
+                <input matInput type="text" formControlName="email">
+
+                @if (form.controls['email'].hasError('required')) {
+                    <mat-error>E-mail é obrigatório.</mat-error>
+                }
+
+                @if (form.controls['email'].hasError('email')) {
+                    <mat-error>E-mail não é válido.</mat-error>
+                }
             </mat-form-field>
     
             <mat-form-field appearance="outline">
                 <mat-label>Senha</mat-label>
-                <input matInput type="text">
+                <input 
+                    matInput
+                    formControlName="password"
+                    [type]="showPassword ? 'text' : 'password'"
+                >
 
+                <mat-icon 
+                    matIconSuffix
+                    [fontIcon]="showPassword ? 'visibility_off' : 'visibility'"
+                    fontIcon="home"
+                    (click)="handleVisibilityPassword()"
+                ></mat-icon>
+
+                <mat-error>Senha é obrigatória.</mat-error>
             </mat-form-field>
         </form>
 
         <div class="login-form__actions d-flex flex-column gap-1">
-            <button class="login__submit-btn">ENTRAR</button>
-            <button class="login__register-btn d-flex justfiy-start">Cadastre-se</button>
+            <button class="login__submit-btn" (click)="handleSubmitForm()">ENTRAR</button>
+            <button class="login__register-btn d-flex justfiy-start" (click)="navigateToSignUpPage()">Cadastre-se</button>
         </div>
     </div>
 
