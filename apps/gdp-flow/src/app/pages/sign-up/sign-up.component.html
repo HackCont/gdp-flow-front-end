@@ -1,1 +1,46 @@
-<p>sign-up works!</p>
+<app-auth-template bannerURL="assets/banner-sign-up.svg" title="Cadastre-se">
+
+    <form class="w-100" [formGroup]="form">
+
+        <div class="form__group d-grid">
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" formControlName="firstName">
+
+                @if (form.controls['firstName'].hasError('required')) {
+                    <mat-error>Nome obrigatório</mat-error>
+                }
+
+                @if (form.controls['firstName'].hasError('maxlength')) {
+                    <mat-error>Nome não pode exceder dos 20 caracteres.</mat-error>
+                }
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Sobrenome</mat-label>
+                <input matInput type="text" formControlName="lastName">
+
+                @if (form.controls['lastName'].hasError('required')) {
+                    <mat-error>Sobrenome obrigatório</mat-error>
+                }
+
+                @if (form.controls['lastName'].hasError('maxlength')) {
+                    <mat-error>Sobrenome não pode exceder dos 50 caracteres.</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput type="text" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput type="text" formControlName="password">
+        </mat-form-field>
+    </form>
+
+    <button (click)="handleNewUser()">CADASTRAR</button>
+
+</app-auth-template>
