@@ -5,6 +5,10 @@ export const appRoutes: Route[] = [
     {
         path: '',
         pathMatch: 'full',
+        loadComponent: () => import('./pages/login/login.component').then(c => c.LoginComponent)
+    },
+    {
+        path: 'cadastro',
         loadComponent: () => import('../app/pages/sign-up/sign-up.component').then(c => c.SignUpComponent)
     },
     {
