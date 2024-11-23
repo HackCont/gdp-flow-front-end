@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: var(--surface-color);
+    border-bottom: .1rem solid var(--border-color);
+    padding: 0 2.5rem;
+    height: 6.5rem;
+}
