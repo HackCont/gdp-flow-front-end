@@ -32,8 +32,15 @@
         </form>
 
         <div class="login__actions d-flex flex-column items-end">
-            <button class="w-100" (click)="handleLogin()">Log in</button>
-            <p>Não tem conta? <span>Cadastre-se!</span></p>
+            <button class="login__actions-btn w-100" (click)="handleLogin()">Log in</button>
+
+            <p>
+                Não tem conta? 
+                <button (click)="navigateToSignUpPage()">
+                    Cadastre-se!
+                </button>
+            </p>
+            
         </div>
     </div>
     

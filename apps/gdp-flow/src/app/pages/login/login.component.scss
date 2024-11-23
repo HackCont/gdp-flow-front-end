@@ -26,7 +26,7 @@
     &__actions {
         gap: 16px;
         
-        button {
+        &-btn {
             background-color: var(--primary-color);
             color: #fff;
             border-radius: .8rem;
@@ -38,7 +38,7 @@
             color: #999;
             font-size: 14px;
 
-            span {
+            button {
                 color: var(--text-color);
             }
         }
