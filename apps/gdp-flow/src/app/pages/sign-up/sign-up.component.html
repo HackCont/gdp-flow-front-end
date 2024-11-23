@@ -1,7 +1,13 @@
 <app-auth-template 
-    bannerURL="assets/banner-sign-up.svg"
-    title="Cadastre-se"
-    message="Preencha as suas informações para realizar o cadastro."
+    [config]="{
+        title: 'Cadastre-se',
+        message: 'Preencha as suas informações para realizar o cadastro.',
+        submitBtnText: 'Cadastrar',
+        actionText: 'Tem conta?',
+        actionBtnText: 'Faça login!'
+    }"
+    (submitBtnEmitter)="handleNewUser()"
+    (actionBtnEmitter)="handleBackToLogin()"
 >
 
     <form class="w-100" [formGroup]="form">
@@ -44,7 +50,5 @@
             <input matInput type="text" formControlName="password">
         </mat-form-field>
     </form>
-
-    <button (click)="handleNewUser()">CADASTRAR</button>
 
 </app-auth-template>
