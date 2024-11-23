@@ -16,15 +16,20 @@
     
         &__main {
             background-color: var(--background-color);
-            padding: 2.8rem 2.5rem; //Validar esse padding geral
-        }
-
-        &--is-user-logged {
-            grid-template-rows: auto 1fr;
         }
     }
 
     &--is-user-logged {
-        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+
+        .app {
+            &-content {
+                grid-template-columns: auto 1fr;
+
+                &__main {
+                        padding: 2.8rem 2.5rem; //Validar esse padding geral
+                }
+            }
+        }
     }
 }
