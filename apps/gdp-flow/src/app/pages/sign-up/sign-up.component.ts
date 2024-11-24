@@ -19,6 +19,8 @@ export class SignUpComponent implements OnInit {
 
   protected form!: FormGroup;
 
+  protected showLoader: boolean = false;
+
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
@@ -51,11 +53,14 @@ export class SignUpComponent implements OnInit {
   private onPostNewUser = () => {
     const newUser = this.form.getRawValue();
 
+    this.showLoader = true;
+    
     this.authService.postNewUser(newUser).subscribe({
       next: (post_user_success) => {
         this.router.navigateByUrl('/login');
       },
       error: (post_user_error: HttpErrorResponse) => {
+        this.showLoader = false;
         console.log('post_user_error: ', post_user_error);
       }
     });
