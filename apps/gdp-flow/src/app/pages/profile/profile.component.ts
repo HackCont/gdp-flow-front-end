@@ -18,7 +18,11 @@ export class ProfileComponent {
   informations: Informations[] = [
     {
       label: 'Nome',
-      txt: 'Rodrigo Silva Marques'
+      txt: 'Rodrigo'
+    },
+    {
+      label: 'Sobrenome',
+      txt: 'Silva Marques'
     },
     {
       label: 'E-mail',
@@ -32,5 +36,6 @@ export class ProfileComponent {
 
   skills: string[] = ['Typescript', 'CSS', 'HTML', 'Java', 'UX', 'UI'];
 
+  protected isEditingInfos = false;
   
 }

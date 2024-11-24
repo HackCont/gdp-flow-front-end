@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
 /**
@@ -14,7 +14,16 @@ import { NgIcon } from '@ng-icons/core';
   styleUrl: './header-card.component.scss',
 })
 export class HeaderCardComponent {
- 
+
   @Input() title!: string;
   @Input() subTitle!: string;
+
+  @Output() editEmitter = new EventEmitter<void>();
+
+  protected isEditing = false;
+
+  protected handleEdit = () => {
+    this.isEditing = !this.isEditing;
+    this.editEmitter.emit();
+  }
 }
