@@ -34,6 +34,7 @@ export class UserService {
 
   public saveUser = (userData: DecodedTokenPropsThatMatter) => {
     this.cookieService.set(USER_KEY, JSON.stringify(userData));
+    this.userData = userData;
   }
 
   public getUser = (): Observable<HTTP_GET_USER_ID> => {
