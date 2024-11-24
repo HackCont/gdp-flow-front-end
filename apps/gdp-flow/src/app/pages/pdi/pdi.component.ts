@@ -13,7 +13,6 @@ import { PdiCardData } from './pdi';
   styleUrl: './pdi.component.scss',
 })
 export class PdiComponent {
-  protected isEdit: boolean = false;
   protected currentIndexCard!: number;
 
   protected pdiCardData: PdiCardData[] = [
