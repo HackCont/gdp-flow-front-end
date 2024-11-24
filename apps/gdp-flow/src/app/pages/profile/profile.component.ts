@@ -28,7 +28,9 @@ export class ProfileComponent {
       label: 'Celular',
       txt: '(51) 9 9924-9292'
     },
-  ]
+  ];
+
+  skills: string[] = ['Typescript', 'CSS', 'HTML', 'Java', 'UX', 'UI'];
 
   
 }

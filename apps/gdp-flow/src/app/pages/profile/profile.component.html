@@ -20,8 +20,8 @@
             </div>
         </div>
 
-        <div class="profile-main__informations">
-            <!-- adicionar componente para header cars -->
+        <div class="profile-main__cards">
+            <!-- Box Informações pessoais -->
              <div class="box">
                  <app-header-card
                     title="Informações pessoais"
@@ -36,6 +36,23 @@
                     }
                  </div>
              </div>
+
+             <!-- Box Habilidades -->
+             <div class="box">
+                 <app-header-card
+                    title="Habilidades"
+                 ></app-header-card>
+                
+                 <div class="profile-main__info-content profile-main__info-content--skills">
+                    @for (skill of skills; track $index) {
+                        <button class="button button--tag">
+                            {{skill}}
+                        </button>
+                    }
+                 </div>
+             </div>
         </div>
+
+        <div></div>
     </div>
 </div>

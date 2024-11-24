@@ -52,13 +52,20 @@
         }
     }
 
-    &__informations {
+    &__cards {
         padding: 3rem 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem
     }
 
     &__info-content {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem 6.4rem;
+        
+        &--skills {
+            gap: 2rem 1.2rem;
+        }
     }
 }

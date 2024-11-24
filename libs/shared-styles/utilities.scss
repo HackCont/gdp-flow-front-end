@@ -104,6 +104,11 @@ $count: (1, 2, 3, 4, 5);
             background-color: #222;
         }
     }
+
+    &--tag {
+        font-size: 1.2rem;
+        color: var(--secundary-color);
+    }
 }
 
 // Styles para os INPUTS no projeto.
