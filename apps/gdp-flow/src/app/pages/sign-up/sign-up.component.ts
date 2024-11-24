@@ -5,6 +5,8 @@ import { FORMS_MODULE } from '../../global/modules/forms-module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../../global/validations/auth-validations';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,6 +21,8 @@ export class SignUpComponent implements OnInit {
 
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
+
+  private authService = inject(AuthService);
 
   ngOnInit(): void {
     this.initForm();
@@ -41,8 +45,20 @@ export class SignUpComponent implements OnInit {
       return;
     };
     
+    this.onPostNewUser();
+  }
+
+  private onPostNewUser = () => {
     const newUser = this.form.getRawValue();
-    alert(JSON.stringify(newUser));
+
+    this.authService.postNewUser(newUser).subscribe({
+      next: (post_user_success) => {
+        this.router.navigateByUrl('/login');
+      },
+      error: (post_user_error: HttpErrorResponse) => {
+        console.log('post_user_error: ', post_user_error);
+      }
+    });
   }
 
   protected handleBackToLogin = () => {
