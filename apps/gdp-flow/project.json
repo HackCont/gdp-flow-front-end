@@ -56,12 +56,24 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/gdp-flow/src/environments/environment.development.ts",
+              "with": "apps/gdp-flow/src/environments/environment.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/gdp-flow/src/environments/environment.ts",
+              "with": "apps/gdp-flow/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -103,14 +115,6 @@
         "port": 4200,
         "staticFilePath": "dist/apps/gdp-flow/browser",
         "spa": true
-      }
-    },
-    "ssr": {
-      "executor": "@angular-devkit/build-angular:server",
-      "options": {
-        "outputPath": "dist/apps/gdp-flow-server",
-        "main": "apps/gdp-flow/src/main.server.ts",
-        "tsConfig": "apps/gdp-flow/tsconfig.server.json"
       }
     }
   }
