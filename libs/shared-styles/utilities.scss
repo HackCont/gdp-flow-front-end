@@ -105,3 +105,10 @@ $count: (1, 2, 3, 4, 5);
         }
     }
 }
+
+.box {
+    background-color: var(--surface-color);
+    border: .1rem solid var(--border-color);
+    border-radius: 2rem;
+    padding: 2rem;
+}
