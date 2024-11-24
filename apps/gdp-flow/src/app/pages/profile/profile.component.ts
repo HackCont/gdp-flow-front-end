@@ -7,11 +7,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { FORMS_MODULE } from '../../global/modules/forms-module';
 import { UserService } from '../../services/user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, RouterHeaderComponent, HeaderCardComponent, FORMS_MODULE],
+  imports: [CommonModule, RouterHeaderComponent, HeaderCardComponent, NgxMaskDirective, FORMS_MODULE],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
@@ -37,7 +38,8 @@ export class ProfileComponent implements OnInit {
     {
       id: 4,
       label: 'Celular',
-      formControlName: 'phone'
+      formControlName: 'phone',
+      mask: '(00) 0 0000-0000'
     },
   ];
 

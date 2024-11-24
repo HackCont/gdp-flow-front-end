@@ -35,12 +35,14 @@
                             <span [ngClass]="isEditingInfos ? 'input-label' : 'profile-main__infos-label'">{{info.label}}</span>
     
                             @if (!isEditingInfos) {
-                                <span class="profile-main__infos-value">{{info.value}}</span>
+                                <span class="profile-main__infos-value">{{form.controls[info.formControlName].value}}</span>
                             } @else {
                                 <input 
                                     class="input"
                                     type="text"
+                                    [dropSpecialCharacters]="false"
                                     [formControlName]="info.formControlName"
+                                    [mask]="info.mask"
                                 >
                             }
                         </li>
