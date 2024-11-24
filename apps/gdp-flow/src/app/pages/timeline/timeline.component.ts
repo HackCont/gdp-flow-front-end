@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterHeaderComponent } from '../../ui/router-header/router-header.component';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { ionAddOutline } from '@ng-icons/ionicons';
 
 @Component({
   selector: 'app-timeline',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterHeaderComponent, NgIcon],
+  providers: [provideIcons({ionAddOutline})],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
 })

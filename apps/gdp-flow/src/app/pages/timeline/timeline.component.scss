@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    gap: 3rem;
+    grid-template-columns: 1fr auto;
+}
+
+
+
+.timeline-main {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr auto;
+
+    &__content {
+        padding: 4rem 2rem;
+    }
+
+    &__form {
+        width: 54rem;
+        display: grid;
+        gap: 1.8rem;
+        padding: 4rem 2rem;
+    }
+
+}

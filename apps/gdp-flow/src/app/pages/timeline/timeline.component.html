@@ -1,1 +1,21 @@
-<p>timeline works!</p>
+<div class="timeline-header">
+    <app-router-header
+        text="Linha do tempo"
+    ></app-router-header>
+</div>
+
+<div class="timeline-main">
+    <div class="timeline-main__content box">
+        timeline
+    </div>
+    
+    <div class="timeline-main__form box">
+        <input class="input" type="date">
+        <input class="input" type="text" placeholder="Título do momento">
+        <textarea class="input" style="resize: none;" placeholder="Descrição" rows="5" [ariaExpanded]="false"></textarea>
+        <button class="button button--filled">
+            <ng-icon name="ionAddOutline"></ng-icon>
+            Adicionar Momento
+        </button>
+    </div>
+</div>
