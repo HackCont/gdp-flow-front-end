@@ -30,7 +30,7 @@ export class SidebarComponent {
     {
       icon: 'ionPieChartOutline',
       txt: 'PDI',
-      rota: ''
+      rota: '/pdi'
     },
     {
       icon: 'ionPlayCircleOutline',

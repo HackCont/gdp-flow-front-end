@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { TimelineComponent } from '../app/pages/timeline/timeline.component';
+import { PdiComponent } from '../app/pages/pdi/pdi.component';
 
 export const appRoutes: Route[] = [
     {
@@ -23,5 +24,9 @@ export const appRoutes: Route[] = [
     {
         path: 'timeline',
         loadComponent: () => import('../app/pages/timeline/timeline.component').then(c => TimelineComponent)
+    },
+    {
+        path: 'pdi',
+        loadComponent: () => import('../app/pages/pdi/pdi.component').then(c => PdiComponent)
     }
 ];
