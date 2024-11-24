@@ -119,6 +119,10 @@ $count: (1, 2, 3, 4, 5);
     border-radius: .8rem;
     padding: 1rem;
     
+    &:focus {
+        outline: .1rem solid var(--primary-color);
+    }    
+    
     &-group {
         display: flex;
         flex-direction: column;
