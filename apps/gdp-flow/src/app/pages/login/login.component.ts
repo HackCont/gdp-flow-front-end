@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TokenService } from '../../services/token/token.service';
 import { UserService } from '../../services/user/user.service';
-import { switchMap, tap } from 'rxjs';
+import { catchError, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -66,12 +66,36 @@ export class LoginComponent implements OnInit {
     this.showLoader = true;
 
     this.authService.authLogin(email, password).pipe(
-      tap(auth => this.tokenService.saveToken(auth.access_token)),
-      switchMap(() => this.usersService.getUser()),
-
-    ).subscribe(data => {
-      this.router.navigateByUrl('/perfil')
+      tap((login_response) => {
+        this.tokenService.saveToken(login_response.access_token);
+      })
+    ).subscribe({
+      next: (login_response) => {
+        this.usersService.getUser().subscribe({
+          next: (user_response) => {
+            this.router.navigateByUrl('/perfil');
+          },
+          error: (user_error: HttpErrorResponse) => {
+            console.log('User Error', user_error);
+            this.showLoader = false;
+          }
+        });
+      },
+      error: (error_response: HttpErrorResponse) => {
+        this.showLoader = false;
+      }
     })
+
+  //   this.authService.authLogin(email, password).pipe(
+  //     tap(auth => this.tokenService.saveToken(auth.access_token)),
+  //     switchMap(() => this.usersService.getUser()),
+  //     catchError(error => {
+  //       this.showLoader = false;
+  //       return error
+  //     })
+  //   ).subscribe(data => {      
+  //     this.router.navigateByUrl('/perfil')
+  //   })
   }
 
   protected handleNavigateToSignUpPage = () => {
