@@ -1,7 +1,5 @@
 <div class="profile-header">
-    <app-router-header
-        text="Perfil do usuário"
-    ></app-router-header>
+    <app-router-header text="Perfil do usuário"></app-router-header>
 </div>
 
 <div class="profile-main">
@@ -10,7 +8,7 @@
         <div class="profile-main__header">
             <div class="profile-main__group-row">
                 <img src="assets/perfil.png" alt="Imagem de perfil">
-    
+
                 <div class="profile-main__group">
                     <button class="button">
                         Upload da foto
@@ -21,50 +19,58 @@
         </div>
 
         <div class="profile-main__cards">
-            <!-- Box Informações pessoais -->
-             <div class="box">
-                 <app-header-card
-                    title="Informações pessoais"
-                 ></app-header-card>
-                
-                 <div class="profile-main__info-content">
-                    @for (info of informations; track $index) {
-                        <div class="profile-main__group-label">
-                            <label>{{info.label}}</label>
-                            {{info.txt}}
-                        </div>
-                    }
-                 </div>
-             </div>
 
-             <!-- Box Habilidades -->
-             <div class="box">
-                 <app-header-card
-                    title="Habilidades"
-                 ></app-header-card>
-                
-                 <div class="profile-main__info-content profile-main__info-content--skills">
-                    @for (skill of skills; track $index) {
-                        <button class="button button--tag">
-                            {{skill}}
-                        </button>
+            <!-- Box Informações pessoais -->
+            <div class="box">
+                <app-header-card title="Informações pessoais" (editEmitter)="isEditingInfos = !isEditingInfos"></app-header-card>
+
+                <ul class="profile-main__infos d-flex">
+                    @for (info of informations; track $index) {
+
+                        <li class="profile-main__infos-item d-flex flex-column" [ngClass]="{'profile-main__infos-item--edit': isEditingInfos}">
+                            <span [ngClass]="isEditingInfos ? 'input-label' : 'profile-main__infos-label'">{{info.label}}</span>
+    
+                            @if (!isEditingInfos) {
+                                <span class="profile-main__infos-value">{{info.txt}}</span>
+                            } @else {
+                                <input class="input" type="text" [value]="info.txt">
+                            }
+                        </li>
                     }
-                 </div>
-             </div>
-             
-             <!-- Box Habilidades -->
-             <div class="box">
-                 <app-header-card
-                    title="Bio"
-                 ></app-header-card>
-                
-                 <div class="profile-main__info-content profile-main__info-content--skills">
+                </ul>
+            </div>
+
+            <!-- Box Habilidades -->
+            <div class="box">
+                <app-header-card title="Habilidades"></app-header-card>
+
+                <div class="profile-main__info-content profile-main__info-content--skills">
+                    @for (skill of skills; track $index) {
+                    <button class="button button--tag">
+                        {{skill}}
+                    </button>
+                    }
+                </div>
+            </div>
+
+            <!-- Box Habilidades -->
+            <div class="box">
+                <app-header-card title="Bio"></app-header-card>
+
+                <div class="profile-main__info-content profile-main__info-content--skills">
                     <p class="profile-main__biography">
-                        Ooii! 👋 Eu sou Rodrigo, desenvolvedor web full stack apaixonado por tecnologia e por criar soluções incríveis na internet. Adoro transformar ideias em projetos reais, desenvolvendo sites e sistemas que fazem a diferença no dia a dia das pessoas. Trabalho com as tecnologias mais modernas do mercado e estou sempre em busca de aprender algo novo para melhorar ainda mais o que faço.
-                        Quando não estou codando ou mergulhado em algum projeto desafiador, você pode me encontrar explorando trilhas, assistindo a uma boa série ou descobrindo aquele café especial escondido na cidade. Sou movido pela curiosidade, pela vontade de inovar e pelo prazer de construir coisas que impactam positivamente o mundo. 🚀💻
+                        Ooii! 👋 Eu sou Rodrigo, desenvolvedor web full stack apaixonado por tecnologia e por criar
+                        soluções incríveis na internet. Adoro transformar ideias em projetos reais, desenvolvendo sites
+                        e sistemas que fazem a diferença no dia a dia das pessoas. Trabalho com as tecnologias mais
+                        modernas do mercado e estou sempre em busca de aprender algo novo para melhorar ainda mais o que
+                        faço.
+                        Quando não estou codando ou mergulhado em algum projeto desafiador, você pode me encontrar
+                        explorando trilhas, assistindo a uma boa série ou descobrindo aquele café especial escondido na
+                        cidade. Sou movido pela curiosidade, pela vontade de inovar e pelo prazer de construir coisas
+                        que impactam positivamente o mundo. 🚀💻
                     </p>
-                 </div>
-             </div>
+                </div>
+            </div>
         </div>
 
         <div></div>

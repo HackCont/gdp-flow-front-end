@@ -4,12 +4,12 @@ import { SidebarComponent } from "./ui/sidebar/sidebar.component";
 import { HeaderComponent } from './ui/header/header.component';
 import { NgClass, NgStyle } from '@angular/common';
 import { provideIcons } from '@ng-icons/core';
-import { ionCreateOutline, ionPencil } from '@ng-icons/ionicons';
+import { ionCheckmark, ionCreateOutline, ionPencil } from '@ng-icons/ionicons';
 
 @Component({
   standalone: true,
   imports: [RouterModule, SidebarComponent, HeaderComponent, NgClass, NgStyle],
-  providers: [provideIcons({ ionCreateOutline, ionPencil })],
+  providers: [provideIcons({ ionCreateOutline, ionPencil, ionCheckmark })],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

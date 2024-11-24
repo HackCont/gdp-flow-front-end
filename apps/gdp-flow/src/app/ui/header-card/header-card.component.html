@@ -10,7 +10,7 @@
     }
 </div>
 
-<button class="button">
-    <ng-icon name="ionPencil"></ng-icon>
-    Editar
+<button class="button" (click)="handleEdit()">
+    <ng-icon [name]="isEditing ? 'ionCheckmark' : 'ionPencil'"></ng-icon>
+    {{isEditing ? 'Salvar' : 'Editar'}}
 </button>

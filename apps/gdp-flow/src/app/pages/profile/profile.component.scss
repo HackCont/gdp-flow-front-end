@@ -45,11 +45,6 @@
         gap: .4rem;
         font-size: 1.4rem;
         width: fit-content;
-
-        label {
-            font-size: 1.2rem;
-            color: var(--text-color-gray);
-        }
     }
 
     &__cards {
@@ -57,6 +52,25 @@
         display: flex;
         flex-direction: column;
         gap: 1.4rem
+    }
+
+    &__infos {
+        gap: 100px;
+
+        &-item {
+            gap: .6rem;
+
+            &--edit {
+                .input-label {
+                    padding-left: .4rem;
+                }
+            }
+        }
+
+        &-label {
+            font-size: 1.2rem;
+            color: var(--text-color-gray);
+        }
     }
 
     &__info-content {
