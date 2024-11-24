@@ -9,7 +9,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const token = utilsService.getItemFromCookies(COOKIE_KEY_TOKEN);
 
   if (token) {
-    const httpHeaders = req.headers.set('authorization', token);
+    const httpHeaders = req.headers.set('authorization', `Bearer ${token}`);
     const requestWithToken = req.clone({headers: httpHeaders});
 
     return next(requestWithToken);

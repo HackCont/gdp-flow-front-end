@@ -19,10 +19,16 @@ export class HeaderCardComponent {
   @Input() subTitle!: string;
 
   @Output() editEmitter = new EventEmitter<void>();
+  @Output() salvarEmitter = new EventEmitter<void>();
 
   protected isEditing = false;
 
-  protected handleEdit = () => {
+
+  protected handleActionClick = () => {
+    if (this.isEditing) {
+      this.salvarEmitter.emit()
+    }
+
     this.isEditing = !this.isEditing;
     this.editEmitter.emit();
   }

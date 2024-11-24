@@ -23,8 +23,8 @@ export class TokenService {
     const decoded: DecodedTokenPropsThatMatter = jwtDecode(token);
   
     // Pega somente as informações mais relevantes para salvar as informações do usuário.
-    const {name, given_name, family_name, email} = decoded;
-    const userData: DecodedTokenPropsThatMatter = {name, given_name, family_name, email};
+    const {sub, name, given_name, family_name, email} = decoded;
+    const userData: DecodedTokenPropsThatMatter = {sub, name, given_name, family_name, email};
 
     this.userService.saveUser(userData);
   }
