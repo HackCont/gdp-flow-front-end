@@ -1,6 +1,14 @@
-<span class="header-card-title">
-    {{title}}
-</span>
+<div class="header-card__group">
+    <span class="header-card__title">
+        {{title}}
+    </span>
+    
+    @if (subTitle) {
+        <span class="header-card__subtitle">
+            {{subTitle}}
+        </span>
+    }
+</div>
 
 <button class="button">
     <ng-icon name="ionPencil"></ng-icon>

@@ -5,8 +5,22 @@
     margin-bottom: 2rem;
 }
 
-.header-card-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--text-color);
+.header-card {
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+    }
+    
+    &__title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    &__subtitle {
+        font-size: 1.4rem;
+        color: var(--text-color-gray);
+    }
 }
