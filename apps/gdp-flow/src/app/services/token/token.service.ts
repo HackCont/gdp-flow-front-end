@@ -2,8 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from "jwt-decode";
 import { CookieService } from 'ngx-cookie-service';
 import { DecodedTokenPropsThatMatter, UserService } from '../user/user.service';
-
-const TOKEN_KEY = 'token';
+import { COOKIE_KEY_TOKEN } from '../../global/constants/key-cookies';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class TokenService {
   private userService = inject(UserService);
   
   public saveToken = (token: string) => {
-    this.cookieService.set(TOKEN_KEY, token);
+    this.cookieService.set(COOKIE_KEY_TOKEN, token);
 
     // Decodifica o token.
     this.decodeToken(token);
