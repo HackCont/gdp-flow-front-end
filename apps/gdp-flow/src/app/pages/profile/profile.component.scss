@@ -84,6 +84,11 @@
     }
 
     &__biography {
-        line-height: 2.6rem;
+        width: 100%;
+
+        textarea {
+            min-height: 200px;
+            resize: none;
+        }
     }
 }

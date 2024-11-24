@@ -1,3 +1,12 @@
+export type Profile = {
+    email: string,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    skills: string[],
+    bio: string
+}
+
 export type Information = {
     id: number;
     label: string

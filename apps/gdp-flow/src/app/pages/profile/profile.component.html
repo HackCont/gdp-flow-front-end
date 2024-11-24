@@ -18,63 +18,90 @@
             </div>
         </div>
 
-        <div class="profile-main__cards">
+        <form class="profile-main__cards" [formGroup]="form">
 
             <!-- Box Informações pessoais -->
             <div class="box">
                 <app-header-card 
                     title="Informações pessoais" 
                     (editEmitter)="isEditingInfos = !isEditingInfos"
-                    (salvarEmitter)="handleSalvarInfos()"
+                    (salvarEmitter)="handleSalvar()"
                 ></app-header-card>
 
-                <form [formGroup]="form">
-                    <ul class="profile-main__infos d-flex">
-                        @for (info of informationsBlock; track $index) {
+                <ul class="profile-main__infos d-flex">
+                    @for (info of informationsBlock; track $index) {
+
+                        <li class="profile-main__infos-item d-flex flex-column" [ngClass]="{'profile-main__infos-item--edit': isEditingInfos}">
+                            <span [ngClass]="isEditingInfos ? 'input-label' : 'profile-main__infos-label'">{{info.label}}</span>
     
-                            <li class="profile-main__infos-item d-flex flex-column" [ngClass]="{'profile-main__infos-item--edit': isEditingInfos}">
-                                <span [ngClass]="isEditingInfos ? 'input-label' : 'profile-main__infos-label'">{{info.label}}</span>
-        
-                                @if (!isEditingInfos) {
-                                    <span class="profile-main__infos-value">{{info.value}}</span>
-                                } @else {
-                                    <input 
-                                        class="input"
-                                        type="text"
-                                        [formControlName]="info.formControlName"
-                                    >
-                                }
-                            </li>
-                        }
-                    </ul>
-                </form>
+                            @if (!isEditingInfos) {
+                                <span class="profile-main__infos-value">{{info.value}}</span>
+                            } @else {
+                                <input 
+                                    class="input"
+                                    type="text"
+                                    [formControlName]="info.formControlName"
+                                >
+                            }
+                        </li>
+                    }
+                </ul>
             </div>
 
             <!-- Box Habilidades -->
             <div class="box">
-                <app-header-card title="Habilidades"></app-header-card>
+                <app-header-card 
+                    title="Habilidades"
+                    (editEmitter)="isEditingSkills = !isEditingSkills"
+                    (salvarEmitter)="handleSalvar()"
+                ></app-header-card>
 
                 <div class="profile-main__info-content profile-main__info-content--skills">
-                    @for (skill of skills; track $index) {
-                    <button class="button button--tag">
-                        {{skill}}
-                    </button>
+                    <ul class="d-flex gap-1">
+                        @for (skill of skills; track $index) {
+                            <button class="button button--tag">
+                                {{skill}}
+                            </button>
+                        }
+                    </ul>
+
+                    @if (isEditingSkills) {
+                        <input 
+                            #newSkillInput
+                            class="input"
+                            type="text"
+                            placeholder="Adicionar nova habilidade"
+                            (keypress)="addNewSkillOnEnterKey($event, newSkillInput)"
+                        >
                     }
                 </div>
             </div>
 
             <!-- Box Habilidades -->
             <div class="box">
-                <app-header-card title="Bio"></app-header-card>
+                <app-header-card 
+                    title="Bio"
+                    (editEmitter)="isEditingBio = !isEditingBio"
+                    (salvarEmitter)="handleSalvar()"
+                ></app-header-card>
 
                 <div class="profile-main__info-content profile-main__info-content--skills">
                     <p class="profile-main__biography">
-                        {{bio}}
+
+                        @if (isEditingBio) {
+                            <textarea
+                                class="input w-100"
+                                type="text"
+                                placeholder="Adicionar sua bio..."
+                                formControlName="bio"
+                            ></textarea>
+                        } @else {
+                            {{bio}}
+                        }
                     </p>
                 </div>
             </div>
-        </div>
 
-        <div></div>
+        </form>
     </div>
 </div>

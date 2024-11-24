@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterHeaderComponent } from '../../ui/router-header/router-header.component';
 import { HeaderCardComponent } from '../../ui/header-card/header-card.component';
-import { Information, UserInfosBlock } from './profile';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Information, Profile, UserInfosBlock } from './profile';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FORMS_MODULE } from '../../global/modules/forms-module';
 import { UserService } from '../../services/user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -41,10 +41,13 @@ export class ProfileComponent implements OnInit {
     },
   ];
 
-  protected skills: string[] = [];
+  protected skills: string[] = ["teste", 'angular', 'xablu'];
   protected bio = '';
 
   protected isEditingInfos = false;
+  protected isEditingSkills = false;
+  protected isEditingBio = false;
+
   protected form!: FormGroup;
 
   private formBuilder = inject(FormBuilder);
@@ -61,9 +64,10 @@ export class ProfileComponent implements OnInit {
       email: [''],
       phone: [''],
       skills: [''],
-      bio: ['']
+      bio: ['', [Validators.maxLength(300)]]
     });
 
+    this.form.controls['email'].disable();
     this.onGetUser();
   }
 
@@ -114,10 +118,38 @@ export class ProfileComponent implements OnInit {
 
   private fillBioBlock = (bio: string) => {
     this.bio = bio;
+    this.form.controls['bio'].setValue(this.bio);
   }
 
-  protected handleSalvarInfos = () => {
-    const rawValue = this.form.getRawValue();
+  protected addNewSkillOnEnterKey = (event: KeyboardEvent, newSkillInput: HTMLInputElement) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
 
+      const skill = newSkillInput.value;
+      this.skills.push(skill);
+
+      newSkillInput.value = '';
+    }
+  }
+
+  protected handleSalvar = () => {
+    const rawValue = {
+      ...this.form.getRawValue(),
+      skills: this.skills
+    };
+
+    this.onPutUser(rawValue);
+  }
+
+  private onPutUser = (profile: Profile) => {
+    this.usersService.putUser(profile).subscribe({
+      next: (put_user_success) => {
+        this.onGetUser();
+        console.log('put_user_success: ', put_user_success)
+      },
+      error: (put_user_error: HttpErrorResponse) => {
+        console.log('put_user_error: ', put_user_error);
+      }
+    })
   }
 }

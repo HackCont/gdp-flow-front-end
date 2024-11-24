@@ -4,6 +4,7 @@ import { environment } from '@env/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { HTTP_GET_USER_ID } from './user';
+import { Profile } from '../../pages/profile/profile';
 
 export type DecodedTokenPropsThatMatter = {sub: string, name: string, given_name: string, family_name: string, email: string}
 
@@ -37,5 +38,12 @@ export class UserService {
 
   public getUser = (): Observable<HTTP_GET_USER_ID> => {
     return this.http.get<HTTP_GET_USER_ID>(`${API_URL}/users/${this.userData?.sub}`);
+  }
+
+  public putUser = (profile: Profile) => {
+    return this.http.put<HTTP_GET_USER_ID>(`${API_URL}/users/${this.userData?.sub}`, {
+      ...profile,
+      skills: profile.skills.join(',')
+    });
   }
 }
