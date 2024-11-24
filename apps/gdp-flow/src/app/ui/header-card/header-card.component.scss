@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-card-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
