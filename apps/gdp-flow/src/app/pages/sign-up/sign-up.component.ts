@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit {
 
     this.authService.postNewUser(newUser).subscribe({
       next: (post_user_success) => {
-        console.log('post_user_success: ', post_user_success);
+        this.router.navigateByUrl('/login');
       },
       error: (post_user_error: HttpErrorResponse) => {
         console.log('post_user_error: ', post_user_error);
