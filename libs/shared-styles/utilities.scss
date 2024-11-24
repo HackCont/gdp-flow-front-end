@@ -68,17 +68,12 @@ $count: (1, 2, 3, 4, 5);
     width: 100%;
 }
 
-// Mensagem de erro para os inputs.
-.input-error-msg {
-    color: #f78278;
-    font-size: 1.4rem;
-}
-
+// Styles para os BUTTON do projeto.
 .button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: 1rem;
     background-color: #fff;
     border: .1rem solid var(--border-color);
     border-radius: .8rem;
@@ -135,6 +130,14 @@ $count: (1, 2, 3, 4, 5);
     }
 }
 
+// Mensagem de erro para os inputs.
+.input-error-msg {
+    color: #f78278;
+    font-size: 1.4rem;
+}
+
+
+// BOX/CARD.
 .box {
     background-color: var(--surface-color);
     border: .1rem solid var(--border-color);
@@ -142,6 +145,7 @@ $count: (1, 2, 3, 4, 5);
     padding: 2rem;
 }
 
+// LOADER ICON -- Utilizado principalmente nos buttons.
 .loader {
     width: 2rem;
     height: 2rem;
@@ -149,6 +153,7 @@ $count: (1, 2, 3, 4, 5);
     position: relative;
     animation: rotate 1s linear infinite
 }
+
 .loader::before {
     content: "";
     box-sizing: border-box;

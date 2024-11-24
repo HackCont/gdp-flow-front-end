@@ -18,11 +18,12 @@
         <ng-content></ng-content>
         
         <div class="template-card__actions d-flex flex-column items-end w-100">
-            <button class="button button--filled w-100" (click)="handleClickSubmitBtn()">
+            <button class="button button--filled w-100 gap-2" (click)="handleClickSubmitBtn()">
+                {{config.submitBtnText}}
+
                 @if (config.showLoader) {
                     <span class="loader"></span>
                 }
-                {{config.submitBtnText}}
             </button>
 
             <p>
