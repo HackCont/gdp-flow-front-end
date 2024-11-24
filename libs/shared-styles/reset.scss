@@ -30,7 +30,7 @@ button {
     outline: none;
     border: none;
     cursor: pointer;
-    transition: .3s;
+    transition: .3s ease;
 
     &:hover {
         transform: scale(1.01);

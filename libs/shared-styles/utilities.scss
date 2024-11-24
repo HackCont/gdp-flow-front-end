@@ -73,3 +73,35 @@ $count: (1, 2, 3, 4, 5);
     color: #f78278;
     font-size: 1.4rem;
 }
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background-color: #fff;
+    border: .1rem solid var(--border-color);
+    border-radius: .8rem;
+    padding: .8rem 1rem;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1.6rem;
+    transition: .2s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    &--filled {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+
+        &:hover {
+            background-color: #5f5f5f;
+            background-color: #222;
+        }
+    }
+}
