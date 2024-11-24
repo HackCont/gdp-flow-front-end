@@ -22,22 +22,32 @@
 
             <!-- Box Informações pessoais -->
             <div class="box">
-                <app-header-card title="Informações pessoais" (editEmitter)="isEditingInfos = !isEditingInfos"></app-header-card>
+                <app-header-card 
+                    title="Informações pessoais" 
+                    (editEmitter)="isEditingInfos = !isEditingInfos"
+                    (salvarEmitter)="handleSalvarInfos()"
+                ></app-header-card>
 
-                <ul class="profile-main__infos d-flex">
-                    @for (info of informations; track $index) {
-
-                        <li class="profile-main__infos-item d-flex flex-column" [ngClass]="{'profile-main__infos-item--edit': isEditingInfos}">
-                            <span [ngClass]="isEditingInfos ? 'input-label' : 'profile-main__infos-label'">{{info.label}}</span>
+                <form [formGroup]="form">
+                    <ul class="profile-main__infos d-flex">
+                        @for (info of informationsBlock; track $index) {
     
-                            @if (!isEditingInfos) {
-                                <span class="profile-main__infos-value">{{info.txt}}</span>
-                            } @else {
-                                <input class="input" type="text" [value]="info.txt">
-                            }
-                        </li>
-                    }
-                </ul>
+                            <li class="profile-main__infos-item d-flex flex-column" [ngClass]="{'profile-main__infos-item--edit': isEditingInfos}">
+                                <span [ngClass]="isEditingInfos ? 'input-label' : 'profile-main__infos-label'">{{info.label}}</span>
+        
+                                @if (!isEditingInfos) {
+                                    <span class="profile-main__infos-value">{{info.value}}</span>
+                                } @else {
+                                    <input 
+                                        class="input"
+                                        type="text"
+                                        [formControlName]="info.formControlName"
+                                    >
+                                }
+                            </li>
+                        }
+                    </ul>
+                </form>
             </div>
 
             <!-- Box Habilidades -->

@@ -1,9 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { environment } from '@env/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
+import { HTTP_GET_USER_ID } from './user';
 
-export type DecodedTokenPropsThatMatter = {name: string, given_name: string, family_name: string, email: string}
+export type DecodedTokenPropsThatMatter = {sub: string, name: string, given_name: string, family_name: string, email: string}
 
 const USER_KEY = 'user';
+const API_URL = environment.API_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +16,7 @@ const USER_KEY = 'user';
 export class UserService {
   
   private cookieService = inject(CookieService);
+  private http = inject(HttpClient);
   
   public getUserFromCookies = (): DecodedTokenPropsThatMatter | null => {
     const userData = this.cookieService.get(USER_KEY);
@@ -27,5 +33,9 @@ export class UserService {
 
   public saveUser = (userData: DecodedTokenPropsThatMatter) => {
     this.cookieService.set(USER_KEY, JSON.stringify(userData));
+  }
+
+  public getUser = (): Observable<HTTP_GET_USER_ID> => {
+    return this.http.get<HTTP_GET_USER_ID>(`${API_URL}/users/${this.userData?.sub}`);
   }
 }
