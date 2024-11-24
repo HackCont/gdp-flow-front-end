@@ -26,7 +26,7 @@
                     @if (form.controls['email'].hasError('email')) {
                         <p class="input-error-msg">E-mail inválido.</p>
                     }
-                }
+                }                
             </div>
     
             <div class="input-group">
@@ -35,6 +35,10 @@
 
                 @if (form.controls['password'].hasError('required') && form.controls['password'].touched) {
                     <p class="input-error-msg">Senha obrigatório.</p>
+                }
+
+                @if (showErrors) {
+                    <p class="input-error-msg">E-mail não cadastrado.</p>
                 }
             </div>
     
