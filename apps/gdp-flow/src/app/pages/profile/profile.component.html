@@ -21,7 +21,21 @@
         </div>
 
         <div class="profile-main__informations">
-            informacoes
+            <!-- adicionar componente para header cars -->
+             <div class="box">
+                 <app-header-card
+                    title="Informações pessoais"
+                 ></app-header-card>
+                
+                 <div class="profile-main__info-content">
+                    @for (info of informations; track $index) {
+                        <div class="profile-main__group-label">
+                            <label>{{info.label}}</label>
+                            {{info.txt}}
+                        </div>
+                    }
+                 </div>
+             </div>
         </div>
     </div>
 </div>

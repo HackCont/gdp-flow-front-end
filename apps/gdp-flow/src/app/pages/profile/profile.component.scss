@@ -39,7 +39,26 @@
         }
     }
 
+    &__group-label {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        font-size: 1.4rem;
+        width: fit-content;
+
+        label {
+            font-size: 1.2rem;
+            color: var(--text-color-gray);
+        }
+    }
+
     &__informations {
-        padding: 3rem 2rem;
+        padding: 3rem 4rem;
+    }
+
+    &__info-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem 6.4rem;
     }
 }
