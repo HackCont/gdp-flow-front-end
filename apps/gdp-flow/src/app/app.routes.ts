@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { TimelineComponent } from '../app/pages/timeline/timeline.component';
 import { PdiComponent } from '../app/pages/pdi/pdi.component';
+import { authGuard } from './guards/auth.guard';
 
 export const appRoutes: Route[] = [
     {
@@ -19,14 +20,17 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'perfil',
-        loadComponent: () => import('../app/pages/profile/profile.component').then(c => ProfileComponent)
+        loadComponent: () => import('../app/pages/profile/profile.component').then(c => ProfileComponent),
+        canActivate: [authGuard]
     },
     {
         path: 'timeline',
-        loadComponent: () => import('../app/pages/timeline/timeline.component').then(c => TimelineComponent)
+        loadComponent: () => import('../app/pages/timeline/timeline.component').then(c => TimelineComponent),
+        canActivate: [authGuard]
     },
     {
         path: 'pdi',
-        loadComponent: () => import('../app/pages/pdi/pdi.component').then(c => PdiComponent)
+        loadComponent: () => import('../app/pages/pdi/pdi.component').then(c => PdiComponent),
+        canActivate: [authGuard]
     }
 ];
