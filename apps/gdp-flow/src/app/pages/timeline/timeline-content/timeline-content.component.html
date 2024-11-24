@@ -10,6 +10,7 @@
                 <app-header-card
                     title="Titulo da entrega"
                     subTitle="01/04/2024"
+                    (editEmitter)="card.isEditing = !card.isEditing"
                 ></app-header-card>
         
                 <div class="timeline-list__description">

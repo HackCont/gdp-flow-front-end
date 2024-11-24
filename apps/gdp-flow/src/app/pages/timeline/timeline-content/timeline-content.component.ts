@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { HeaderCardComponent } from '../../../ui/header-card/header-card.component';
 import { TimeLineData } from './timeline-content';
+import { TimelineMoment, TimelineService } from '../timeline.service';
+
+import {takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-timeline-content',
@@ -10,22 +13,28 @@ import { TimeLineData } from './timeline-content';
   templateUrl: './timeline-content.component.html',
   styleUrl: './timeline-content.component.scss',
 })
-export class TimelineContentComponent {
-  protected timeLineData: TimeLineData[] = [
-    {
-      title: "Titulo da entrega",
-      date: '23/11/2024',
-      description: 'Descrição da integra que foi feita na data x e trouxe tai beneficios para o colaborador e para a empresa como exemplo.'
-    },
-    {
-      title: "Titulo da entrega",
-      date: '23/11/2024',
-      description: 'Descrição da integra que foi feita na data x e trouxe tai beneficios para o colaborador e para a empresa como exemplo.'
-    },
-    {
-      title: "Titulo da entrega",
-      date: '23/11/2024',
-      description: 'Descrição da integra que foi feita na data x e trouxe tai beneficios para o colaborador e para a empresa como exemplo.'
-    },
-  ]
+export class TimelineContentComponent implements OnInit {
+
+  private timelineService = inject(TimelineService);
+  private destroyRef = inject(DestroyRef);
+
+  protected timeLineData: TimeLineData[] = [];
+
+  ngOnInit(): void {
+    this.checkLastMoment();
+  }
+
+  private checkLastMoment = () => {
+    this.timelineService.lastAddedMoment$.pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(moment => {
+      if (moment) {
+        this.addLastMoment(moment);
+      }
+    });
+  }
+
+  private addLastMoment = (moment: TimelineMoment) => {
+    this.timeLineData.push(moment)
+  }
 }
