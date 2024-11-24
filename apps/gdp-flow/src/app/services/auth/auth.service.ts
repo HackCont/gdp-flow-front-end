@@ -15,7 +15,7 @@ export class AuthService {
   private http = inject(HttpClient);
 
   public authLogin = (email: string, password: string): Observable<HTTP_POST_LOGIN> => {
-    return this.http.post<HTTP_POST_LOGIN>(`${API_URL}/users/login`, {
+    return this.http.post<HTTP_POST_LOGIN>(`${API_URL}/auth/login`, {
       email,
       password
     })
@@ -24,7 +24,7 @@ export class AuthService {
   public postNewUser = (user: {firstName: string, lastName: string, email: string, password: string}) => {
     const {firstName, lastName, email, password} = user;
 
-    return this.http.post(`${API_URL}/users/register`, {
+    return this.http.post(`${API_URL}/auth/register`, {
       firstName,
       lastName,
       email,
