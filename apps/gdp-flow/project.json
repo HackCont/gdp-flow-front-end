@@ -7,13 +7,17 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular-builders/custom-webpack:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/gdp-flow",
         "index": "apps/gdp-flow/src/index.html",
-        "browser": "apps/gdp-flow/src/main.ts",
-        "polyfills": ["zone.js"],
+        "main": "apps/gdp-flow/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/gdp-flow/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -34,10 +38,8 @@
           ]
         },
         "scripts": [],
-        "server": "apps/gdp-flow/src/main.server.ts",
-        "prerender": true,
-        "ssr": {
-          "entry": "apps/gdp-flow/server.ts"
+        "customWebpackConfig": {
+          "path": "apps/gdp-flow/src/custom-webpack.config.ts"
         }
       },
       "configurations": {
@@ -54,18 +56,30 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/gdp-flow/src/environments/environment.development.ts",
+              "with": "apps/gdp-flow/src/environments/environment.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/gdp-flow/src/environments/environment.ts",
+              "with": "apps/gdp-flow/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular-builders/custom-webpack:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "gdp-flow:build:production"
@@ -87,7 +101,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/gdp-flow/jest.config.ts"
       }

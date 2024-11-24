@@ -31,7 +31,7 @@
     
             <div class="input-group">
                 <span class="input-label">Senha</span>
-                <input class="input" type="text" placeholder="**********" formControlName="password">
+                <input class="input" type="password" placeholder="**********" formControlName="password">
 
                 @if (form.controls['password'].hasError('required') && form.controls['password'].touched) {
                     <p class="input-error-msg">Senha obrigatório.</p>
