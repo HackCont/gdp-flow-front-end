@@ -5,23 +5,25 @@
 </div>
 
 <div class="pdi-main">
-    <ul class="pdi-main__list box">
-        @for (card of pdiCardData; track $index) {
-            <li class="pdi-main__card box">
-                <app-header-card 
-                    [title]="card.title"
-                    (editEmitter)="changeEditMode(card)"
-                ></app-header-card>
-                
-                @if (card.isEditing) {
-                    <textarea class="input" style="resize: none; width: 100%;" rows="4">{{card.description}}</textarea>
-                } @else {
-                    {{card.description}}
-                }
-            </li>
-        
-        }
-    </ul>
+    <form [formGroup]="form">
+        <ul class="pdi-main__list box">
+            @for (card of pdiCardData; track $index) {
+                <li class="pdi-main__card box">
+                    <app-header-card
+                        [title]="card.title"
+                        (editEmitter)="changeEditMode(card)"
+                    ></app-header-card>
+    
+                    @if (card.isEditing) {
+                        <textarea class="input" style="resize: none; width: 100%;" rows="4" [formControlName]="card.formControl">{{card.description}}</textarea>
+                    } @else {
+                        {{card.description}}
+                    }
+                </li>
+    
+            }
+        </ul>
+</form>
     
     <div class="pdi-main__grid-group">
         <div class="pdi-main__graph box">
