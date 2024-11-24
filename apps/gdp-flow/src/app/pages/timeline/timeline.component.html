@@ -9,13 +9,33 @@
         <app-timeline-content></app-timeline-content>
     </div>
     
-    <div class="timeline-main__form box">
-        <input class="input" type="date">
-        <input class="input" type="text" placeholder="Título do momento">
-        <textarea class="input" style="resize: none;" placeholder="Descrição" rows="5" [ariaExpanded]="false"></textarea>
-        <button class="button button--filled">
+    <form class="timeline-main__form box" [formGroup]="form">
+
+        <input 
+            class="input"
+            type="date"
+            formControlName="data"
+        >
+
+        <input 
+            class="input"
+            type="text"
+            placeholder="Título do momento"
+            formControlName="title"
+        >
+
+        <textarea 
+            class="input"
+            style="resize: none;"
+            placeholder="Descrição"
+            rows="5"
+            formControlName="description"
+            [ariaExpanded]="false"
+        ></textarea>
+
+        <button class="button button--filled" (click)="handleAddNewMoment()">
             <ng-icon name="ionAddOutline"></ng-icon>
             Adicionar Momento
         </button>
-    </div>
+    </form>
 </div>

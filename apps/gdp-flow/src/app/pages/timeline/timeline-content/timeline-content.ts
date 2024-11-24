@@ -1,5 +1,6 @@
 export type TimeLineData = {
     title: string
-    date: string
-    description: string
+    data: string
+    description: string;
+    isEditing?: boolean;
 }
