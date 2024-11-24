@@ -41,7 +41,8 @@ export class ProfileComponent implements OnInit {
     },
   ];
 
-  protected readonly skills: string[] = ['Typescript', 'CSS', 'HTML', 'Java', 'UX', 'UI'];
+  protected skills: string[] = [];
+  protected bio = '';
 
   protected isEditingInfos = false;
   protected form!: FormGroup;
@@ -69,8 +70,12 @@ export class ProfileComponent implements OnInit {
   private onGetUser = () => {
     this.usersService.getUser().subscribe({
       next: (get_user_success) => {
-        const {firstName, lastName, email, phone} = get_user_success;
+        const {firstName, lastName, email, phone, skills, bio} = get_user_success;
+        
         this.fillInformationsBlock({firstName, lastName, email, phone});
+        this.fillSkillsBlock(skills);
+        this.fillBioBlock(bio);
+
         console.log('get_user_success: ', get_user_success);
       },
       error: (get_user_error: HttpErrorResponse) => {
@@ -92,6 +97,23 @@ export class ProfileComponent implements OnInit {
         this.form.controls[infosBlockItem.formControlName].setValue(valorInfo);
       }
     })
+  }
+
+  private fillSkillsBlock = (userSkills: string) => {
+
+    if (!userSkills) {
+      return;
+    }
+    
+    const userSkillsArray = userSkills.split(',');
+
+    if (userSkills.length) {
+      this.skills = userSkillsArray;
+    }
+  }
+
+  private fillBioBlock = (bio: string) => {
+    this.bio = bio;
   }
 
   protected handleSalvarInfos = () => {
