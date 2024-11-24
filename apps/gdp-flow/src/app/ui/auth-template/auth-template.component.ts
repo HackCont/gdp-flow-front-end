@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-type Config = {title: string, message: string, submitBtnText: string, actionText: string, actionBtnText: string};
+type Config = {title: string, message: string, submitBtnText: string, actionText: string, actionBtnText: string, showLoader?: boolean};
 
 @Component({
   selector: 'app-auth-template',
