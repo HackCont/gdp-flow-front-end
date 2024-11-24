@@ -10,9 +10,31 @@
     (actionBtnEmitter)="handleBackToLogin()"
 >
 
-    <form class="w-100" [formGroup]="form">
+    <form class="d-flex flex-column w-100 gap-2" [formGroup]="form">
 
-        <div class="form__group d-grid">
+        <div class="form__row d-grid">
+            <div class="input-group">
+                <span class="input-label">Nome</span>
+                <input type="text" class="input" placeholder="Seu nome" formControlName="firstName">
+            </div>
+
+            <div class="input-group">
+                <span class="input-label">Sobrenome</span>
+                <input class="input" type="text" placeholder="Seu sobrenome" formControlName="lastName">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <span class="input-label">E-mail</span>
+            <input class="input" type="text" placeholder="E-mail" formControlName="email">
+        </div>          
+        
+        <div class="input-group">
+            <span class="input-label">Senha</span>
+            <input class="input" type="text" placeholder="Senha" formControlName="password">
+        </div>
+
+        <!-- <div class="form__group d-grid">
             <mat-form-field>
                 <mat-label>Nome</mat-label>
                 <input matInput type="text" formControlName="firstName">
@@ -48,7 +70,7 @@
         <mat-form-field>
             <mat-label>Senha</mat-label>
             <input matInput type="text" formControlName="password">
-        </mat-form-field>
+        </mat-form-field> -->
     </form>
 
 </app-auth-template>
