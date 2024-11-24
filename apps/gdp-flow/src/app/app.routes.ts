@@ -3,6 +3,7 @@ import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { TimelineComponent } from '../app/pages/timeline/timeline.component';
 import { PdiComponent } from '../app/pages/pdi/pdi.component';
 import { authGuard } from './guards/auth.guard';
+import { ModoApresentacaoComponent } from '../app/pages/modo-apresentacao/modo-apresentacao.component';
 
 export const appRoutes: Route[] = [
     {
@@ -31,6 +32,11 @@ export const appRoutes: Route[] = [
     {
         path: 'pdi',
         loadComponent: () => import('../app/pages/pdi/pdi.component').then(c => PdiComponent),
+        canActivate: [authGuard]
+    },
+    {
+        path: 'modo-apresentacao',
+        loadComponent: () => import('../app/pages/modo-apresentacao/modo-apresentacao.component').then(c => ModoApresentacaoComponent),
         canActivate: [authGuard]
     }
 ];

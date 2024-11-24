@@ -35,7 +35,7 @@ export class SidebarComponent {
     {
       icon: 'ionPlayCircleOutline',
       txt: 'Modo de apresentação',
-      rota: ''
+      rota: '/modo-apresentacao'
     },
   ];
 
