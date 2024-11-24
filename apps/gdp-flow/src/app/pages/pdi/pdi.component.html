@@ -1,0 +1,37 @@
+<div class="pdi-header">
+    <app-router-header
+        text="PDI"
+    ></app-router-header>
+</div>
+
+<div class="pdi-main">
+    <ul class="pdi-main__list box">
+        @for (card of pdiCardData; track $index) {
+
+            <li class="pdi-main__card box">
+                <app-header-card 
+                    [title]="card.title"
+                ></app-header-card>
+                {{card.description}}
+            </li>
+        }
+    </ul>
+    
+    <div class="pdi-main__grid-group">
+        <div class="pdi-main__graph box">
+            <img src="assets/grafico.png" alt="Grafico de PDI">
+        </div>
+
+        <div class="pdi-main__obj box">
+            <app-header-card
+                title="Objetivo"
+            ></app-header-card>
+            
+            <p>
+                "Meu objetivo como desenvolvedor dentro da empresa é contribuir de forma significativa para o crescimento e sucesso dos projetos, entregando soluções eficientes e inovadoras que impactem positivamente nossos clientes. Quero aprimorar constantemente minhas habilidades técnicas e aprender novas tecnologias que agreguem valor ao time e aos produtos que desenvolvemos.
+Além disso, busco fortalecer minha capacidade de colaboração, assumindo desafios maiores e participando ativamente de decisões estratégicas. Meu propósito é crescer junto com a empresa, assumindo futuramente posições de maior responsabilidade, como líder técnico ou arquiteto de software, enquanto ajudo a construir um ambiente de trabalho colaborativo e inspirador."
+            </p>
+        </div>
+    </div>
+    
+</div>

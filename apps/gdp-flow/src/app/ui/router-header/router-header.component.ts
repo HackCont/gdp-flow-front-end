@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+/**
+ * Inputs
+ * - text!: string
+ */
 
 @Component({
   selector: 'app-router-header',

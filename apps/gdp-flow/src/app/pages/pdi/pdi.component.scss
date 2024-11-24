@@ -1,0 +1,30 @@
+:host {
+    display: block;
+}
+
+.pdi-main {
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    gap: 3rem;
+
+    &__list {
+        display: grid;
+        gap: 1.2rem;
+    }
+
+    &__grid-group {
+        display: grid;
+        gap: 3rem;
+        grid-template-rows: 1fr 1fr;
+    }
+   
+    &__graph {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-width: 32rem;
+        }
+    }
+}
