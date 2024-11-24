@@ -105,3 +105,23 @@ $count: (1, 2, 3, 4, 5);
         }
     }
 }
+
+// Styles para os INPUTS no projeto.
+.input {
+    background-color: #fff;
+    color: #999;
+    border: 1px solid #e3e3e3;
+    border-radius: .8rem;
+    padding: 1rem;
+    
+    &-group {
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+    }
+
+    &-label {
+        color: var(--text-color);
+        font-weight: 500;
+    }
+}

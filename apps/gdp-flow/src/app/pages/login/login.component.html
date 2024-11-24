@@ -12,11 +12,11 @@
 
     <div class="login w-100 gap-2">
 
-        <form class="login__form d-flex flex-column w-100" [formGroup]="form">
+        <form class="d-flex flex-column w-100 gap-2" [formGroup]="form">
     
-            <div class="login__form-group">
-                <span class="login__form-label">E-mail</span>
-                <input class="login__form-input" type="text" placeholder="exemplo@gmail.com" formControlName="email">
+            <div class="input-group">
+                <span class="input-label">E-mail</span>
+                <input class="input" type="text" placeholder="exemplo@gmail.com" formControlName="email">
 
                 @if (form.controls['email'].touched) {
 
@@ -26,13 +26,12 @@
                     @if (form.controls['email'].hasError('email')) {
                         <p class="input-error-msg">E-mail inválido.</p>
                     }
-
                 }
             </div>
     
-            <div class="login__form-group">
-                <span class="login__form-label">Senha</span>
-                <input class="login__form-input" type="text" placeholder="**********" formControlName="password">
+            <div class="input-group">
+                <span class="input-label">Senha</span>
+                <input class="input" type="text" placeholder="**********" formControlName="password">
 
                 @if (form.controls['password'].hasError('required') && form.controls['password'].touched) {
                     <p class="input-error-msg">Senha obrigatório.</p>
