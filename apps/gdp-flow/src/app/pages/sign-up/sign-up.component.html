@@ -16,62 +16,64 @@
         <div class="form__row d-grid">
             <div class="input-group">
                 <span class="input-label">Nome</span>
-                <input type="text" class="input" placeholder="Seu nome" formControlName="firstName">
+                <input type="text" class="input" placeholder="Seu nome" formControlName="firstName">   
+
+                @if (form.controls['firstName'].touched) {
+
+                    @if (form.controls['firstName'].hasError('required')) {
+                        <p class="input-error-msg">Nome obrigatório.</p>
+                    }
+                    @if (form.controls['firstName'].hasError('maxlength')) {
+                        <p class="input-error-msg">Nome não pode exceder 20 caracteres.</p>
+                    }
+                }   
             </div>
 
             <div class="input-group">
                 <span class="input-label">Sobrenome</span>
                 <input class="input" type="text" placeholder="Seu sobrenome" formControlName="lastName">
+                
+                @if (form.controls['lastName'].touched) {
+
+                    @if (form.controls['lastName'].hasError('required')) {
+                        <p class="input-error-msg">Sobrenome obrigatório.</p>
+                    }
+                    @if (form.controls['lastName'].hasError('maxlength')) {
+                        <p class="input-error-msg">Sobrenome não pode exceder 50 caracteres.</p>
+                    }
+                }   
             </div>
         </div>
 
         <div class="input-group">
             <span class="input-label">E-mail</span>
             <input class="input" type="text" placeholder="E-mail" formControlName="email">
+
+            @if (form.controls['email'].touched) {
+
+                @if (form.controls['email'].hasError('required')) {
+                    <p class="input-error-msg">E-mail obrigatório.</p>
+                }
+                @if (form.controls['email'].hasError('email')) {
+                    <p class="input-error-msg">E-mail inválido.</p>
+                }
+            }   
         </div>          
         
         <div class="input-group">
             <span class="input-label">Senha</span>
             <input class="input" type="password" placeholder="Senha" formControlName="password">
+
+            @if (form.controls['password'].touched) {
+
+                @if (form.controls['password'].hasError('required')) {
+                    <p class="input-error-msg">Senha obrigatória.</p>
+                }
+                @if (form.controls['password'].hasError('maxlength')) {
+                    <p class="input-error-msg">Senha não pode exceder 20 caracteres.</p>
+                }
+            }   
         </div>
-
-        <!-- <div class="form__group d-grid">
-            <mat-form-field>
-                <mat-label>Nome</mat-label>
-                <input matInput type="text" formControlName="firstName">
-
-                @if (form.controls['firstName'].hasError('required')) {
-                    <mat-error>Nome obrigatório</mat-error>
-                }
-
-                @if (form.controls['firstName'].hasError('maxlength')) {
-                    <mat-error>Nome não pode exceder dos 20 caracteres.</mat-error>
-                }
-            </mat-form-field>
-            
-            <mat-form-field>
-                <mat-label>Sobrenome</mat-label>
-                <input matInput type="text" formControlName="lastName">
-
-                @if (form.controls['lastName'].hasError('required')) {
-                    <mat-error>Sobrenome obrigatório</mat-error>
-                }
-
-                @if (form.controls['lastName'].hasError('maxlength')) {
-                    <mat-error>Sobrenome não pode exceder dos 50 caracteres.</mat-error>
-                }
-            </mat-form-field>
-        </div>
-
-        <mat-form-field>
-            <mat-label>E-mail</mat-label>
-            <input matInput type="text" formControlName="email">
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Senha</mat-label>
-            <input matInput type="text" formControlName="password">
-        </mat-form-field> -->
     </form>
 
 </app-auth-template>

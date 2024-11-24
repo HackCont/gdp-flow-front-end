@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
 
   protected form!: FormGroup;
 
-  protected showLoader: boolean = false;
+  protected showLoader = false;
 
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
