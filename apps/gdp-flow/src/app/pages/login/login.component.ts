@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthTemplateComponent } from "../../ui/auth-template/auth-template.component";
 import { FORMS_MODULE } from '../../global/modules/forms-module';
+import { AuthService } from '../../services/auth/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +25,10 @@ export class LoginComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
+  private authService = inject(AuthService);
+
   ngOnInit(): void {
     this.initForm();
-
   }
 
   private initForm = () => {
@@ -46,8 +49,21 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const rawValue = this.form.getRawValue();
-    alert(JSON.stringify(rawValue));
+    // Chama endpoint de autenticação.
+    this.onAuthLogin();
+  }
+
+  private onAuthLogin = () => {
+    const {email, password} = this.form.getRawValue();
+
+    this.authService.authLogin(email, password).subscribe({
+      next: (post_login_success) => {
+        console.log('post_login_success: ', post_login_success);
+      },
+      error: (post_login_error: HttpErrorResponse) => {
+        console.log('post_login_error: ', post_login_error);
+      },
+    });
   }
 
   protected handleNavigateToSignUpPage = () => {
