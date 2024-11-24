@@ -12,6 +12,7 @@ export type Information = {
     label: string
     formControlName: string;
     value?: string
+    mask?: string;
 }
 
 export type UserInfosBlock = {
