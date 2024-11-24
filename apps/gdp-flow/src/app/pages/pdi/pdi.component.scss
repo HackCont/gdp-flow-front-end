@@ -2,6 +2,11 @@
     display: block;
 }
 
+textarea {
+    resize: none;
+    width: 100%;
+}
+
 .pdi-main {
     display: grid;
     grid-template-columns: 1fr .7fr;
@@ -25,6 +30,12 @@
 
         img {
             max-width: 32rem;
+        }
+    }
+
+    &__goal {
+        textarea {
+            min-height: 20rem;
         }
     }
 }

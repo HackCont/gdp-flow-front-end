@@ -1,45 +1,58 @@
 <div class="pdi-header">
-    <app-router-header
-        text="PDI"
-    ></app-router-header>
+    <app-router-header text="PDI"></app-router-header>
 </div>
 
-<div class="pdi-main">
-    <form [formGroup]="form">
-        <ul class="pdi-main__list box">
-            @for (card of pdiCardData; track $index) {
-                <li class="pdi-main__card box">
-                    <app-header-card
-                        [title]="card.title"
-                        (editEmitter)="changeEditMode(card)"
-                    ></app-header-card>
-    
-                    @if (card.isEditing) {
-                        <textarea class="input" style="resize: none; width: 100%;" rows="4" [formControlName]="card.formControl">{{card.description}}</textarea>
-                    } @else {
-                        {{card.description}}
-                    }
-                </li>
-    
-            }
-        </ul>
-</form>
-    
+<form class="pdi-main" [formGroup]="form">
+
+    <ul class="pdi-main__list box">
+
+        @for (card of pdiCardData; track $index) {
+            <li class="pdi-main__card box">
+                <app-header-card 
+                    [title]="card.title"
+                    (editEmitter)="card.isEditing = !card.isEditing"
+                    (salvarEmitter)="onPutPDI()"
+                ></app-header-card>
+
+                @if (card.isEditing) {
+                    <textarea 
+                        class="input"
+                        rows="4"
+                        [placeholder]="'Devo ' + card.title.toLowerCase() + '...'"
+                        [formControlName]="card.formControlName"
+                    >
+                    </textarea>
+                } @else {
+                    {{form.controls[card.formControlName].value}}
+                }
+            </li>
+        }
+
+    </ul>
+
     <div class="pdi-main__grid-group">
         <div class="pdi-main__graph box">
             <img src="assets/grafico.png" alt="Grafico de PDI">
         </div>
 
-        <div class="pdi-main__obj box">
-            <app-header-card
+        <div class="pdi-main__goal box">
+            <app-header-card 
                 title="Objetivo"
+                (editEmitter)="isEditingGoal = !isEditingGoal"
+                (salvarEmitter)="onPutPDI()"
             ></app-header-card>
-            
-            <p>
-                "Meu objetivo como desenvolvedor dentro da empresa é contribuir de forma significativa para o crescimento e sucesso dos projetos, entregando soluções eficientes e inovadoras que impactem positivamente nossos clientes. Quero aprimorar constantemente minhas habilidades técnicas e aprender novas tecnologias que agreguem valor ao time e aos produtos que desenvolvemos.
-Além disso, busco fortalecer minha capacidade de colaboração, assumindo desafios maiores e participando ativamente de decisões estratégicas. Meu propósito é crescer junto com a empresa, assumindo futuramente posições de maior responsabilidade, como líder técnico ou arquiteto de software, enquanto ajudo a construir um ambiente de trabalho colaborativo e inspirador."
-            </p>
+
+            @if (!isEditingGoal) {
+                <p>{{form.controls['goal'].value}}</p>
+            } @else {
+                <textarea
+                    class="input"
+                    type="text"
+                    placeholder="Descreva o seu objetivo..."
+                    formControlName="goal"
+                ></textarea>
+            }
         </div>
     </div>
-    
-</div>
+</form>
+

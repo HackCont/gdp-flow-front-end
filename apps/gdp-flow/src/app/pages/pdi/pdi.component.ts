@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterHeaderComponent } from '../../ui/router-header/router-header.component';
 import { HeaderCardComponent } from '../../ui/header-card/header-card.component';
 import { NgIcon } from '@ng-icons/core';
-import { PdiCardData } from './pdi';
+import { HTTP_GET_USER_PDI, PdiCardData, PdiDados } from './pdi';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FORMS_MODULE } from '../../global/modules/forms-module';
+import { PdiService } from './pdi.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-pdi',
@@ -16,64 +18,86 @@ import { FORMS_MODULE } from '../../global/modules/forms-module';
 })
 export class PdiComponent implements OnInit{
   protected currentIndexCard!: number;
-
+  
   protected form!: FormGroup;
+  private userPDI!: HTTP_GET_USER_PDI;
+
   private formBuilder = inject(FormBuilder);
+  private pdiService = inject(PdiService);
+
+  protected isEditingGoal = false;
 
   protected pdiCardData: PdiCardData[] = [
     {
       title: 'Começar a fazer',
-      description: '"Começar a participar de forma mais ativa nas reuniões de equipe, contribuindo com ideias e sugestões para melhorias nos projetos. Além disso, dedicar pelo menos 1 hora semanal para estudo de tecnologias emergentes relacionadas à minha área de atuação."',
-      formControl: 'comecarFazer'
+      formControlName: 'startDoing',
+      placeholder: "Devo começar a fazer..."
     },
     {
       title: 'Parar de fazer',
-      description: '"Parar de procrastinar tarefas importantes deixando-as para o último minuto. Também preciso evitar assumir mais compromissos do que consigo gerenciar, priorizando qualidade em vez de quantidade."',
-      formControl: 'pararFazer'
+      formControlName: 'stopDoing',
+      placeholder: "Devo parar de fazer..."
     },
     {
       title: 'Fazer menos',
-      description: '"Reduzir o tempo gasto em tarefas administrativas que podem ser delegadas ou automatizadas. Também dedicar menos horas às redes sociais durante o horário de trabalho para evitar distrações."',
-      formControl: 'fazerMenos'
+      formControlName: 'doLess',
+      placeholder: ""
     },
     {
       title: 'Continuar a fazer',
-      description: '"Continuar a organizar meu trabalho utilizando ferramentas de gestão, como o Trello, para manter a produtividade. Além disso, seguir revisando o código com atenção aos padrões estabelecidos e colaborando com os colegas em revisões de PR."',
-      formControl: 'continuarFazer'
+      formControlName: 'keepDoing',
+      placeholder: ""
     },
     {
       title: 'Fazer mais',
-      description: '"Focar mais no desenvolvimento de habilidades interpessoais, como comunicação assertiva e trabalho em equipe, participando de workshops ou treinamentos voltados para soft skills. Além disso, realizar mais testes e validações no código para garantir entregas com menos erros."',
-      formControl: 'fazerMais'
+      formControlName: 'doMore',
+      placeholder: ""
     },
   ]
 
   ngOnInit(): void {
-      this.initForm();
+    this.onGetPDI();
+    this.initForm();
+  }
+
+  private onGetPDI = () => {
+    this.pdiService.getPDI().subscribe({
+      next: (get_pdi_success) => {
+        this.userPDI = get_pdi_success;
+
+        this.initForm();
+        console.log('userPDI: ', this.userPDI);
+      },
+      error: (get_pdi_error: HttpErrorResponse) => {
+        console.log('get_pdi_error:', get_pdi_error)
+      }
+    })
   }
 
   private initForm = () => {
+    const {startDoing, stopDoing, doLess, keepDoing, doMore, goal} = this.userPDI || {};
+
     this.form = this.formBuilder.group({
-      comecarFazer: [''],
-      pararFazer: [''],
-      fazerMenos: [''],
-      continuarFazer: [''],
-      fazerMais: ['']
+      startDoing: [startDoing],
+      stopDoing: [stopDoing],
+      doLess: [doLess],
+      keepDoing: [keepDoing],
+      doMore: [doMore],
+      goal: [goal]
     });
   }
 
-  public changeEditMode = (item: PdiCardData) => {
-    item.isEditing = !item.isEditing
+  protected onPutPDI = () => {
+    const pdiDados: PdiDados = this.form.getRawValue();
 
-    // Falta setar o valor que ta no input
-    if (!item.isEditing) {
-      const descriptrion = item.description;
-      console.log('descr', descriptrion);
-    }
-    
-    console.log('teste', this.form.controls['fazerMais'].value);
-    
-
+    this.pdiService.putPDI(pdiDados, this.userPDI.id).subscribe({
+      next: (put_pdi_success) => {
+        console.log('put_pdi_success: ', put_pdi_success);
+        this.onGetPDI();
+      },
+      error: (put_pdi_error: HttpErrorResponse) => {
+        console.log('put_pdi_error:', put_pdi_error)
+      }
+    })
   }
-
 }
