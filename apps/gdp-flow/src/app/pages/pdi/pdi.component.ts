@@ -8,12 +8,14 @@ import { PdiCardData } from './pdi';
 @Component({
   selector: 'app-pdi',
   standalone: true,
-  imports: [CommonModule, RouterHeaderComponent, HeaderCardComponent, NgIcon,],
+  imports: [CommonModule, RouterHeaderComponent, HeaderCardComponent, NgIcon],
   templateUrl: './pdi.component.html',
   styleUrl: './pdi.component.scss',
 })
 export class PdiComponent {
-  pdiCardData: PdiCardData[] = [
+  protected currentIndexCard!: number;
+
+  protected pdiCardData: PdiCardData[] = [
     {
       title: 'Começar a fazer',
       description: '"Começar a participar de forma mais ativa nas reuniões de equipe, contribuindo com ideias e sugestões para melhorias nos projetos. Além disso, dedicar pelo menos 1 hora semanal para estudo de tecnologias emergentes relacionadas à minha área de atuação."'
@@ -35,5 +37,10 @@ export class PdiComponent {
       description: '"Focar mais no desenvolvimento de habilidades interpessoais, como comunicação assertiva e trabalho em equipe, participando de workshops ou treinamentos voltados para soft skills. Além disso, realizar mais testes e validações no código para garantir entregas com menos erros."'
     },
   ]
+
+  public changeEditMode = (item: PdiCardData) => {
+    item.isEditing = !item.isEditing
+
+  }
 
 }
