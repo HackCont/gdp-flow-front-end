@@ -3,7 +3,7 @@
     place-items: center;
     height: 100%;
     
-    &-form {
+    &-card {
         width: 60%;
         background-color: white;
         border: 1px solid #E4E5E9;
@@ -23,6 +23,27 @@
                 font-size: 2.4rem;
                 font-weight: 500;
             }
+        }
+
+        &__actions {
+            gap: 16px;
+    
+            p {
+                color: #999;
+                font-size: 14px;
+    
+                button {
+                    color: var(--text-color);
+                }
+            }
+        }
+
+        &__submit-btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: .8rem;
+            padding: 1.2rem;
+            font-weight: 700;
         }
     }
 

@@ -1,7 +1,13 @@
 <app-auth-template 
-    bannerURL="assets/banner-login.svg"
-    title="Entre no GDP Flow"
-    message="Entre com seu e-mail e senha para logar"
+    [config]="{
+        title: 'Entre no GDP Flow',
+        message: 'Entre com seu e-mail e senha para logar.',
+        submitBtnText: 'Log in',
+        actionText: 'Não tem conta?',
+        actionBtnText: 'Cadastre-se!'
+    }"
+    (submitBtnEmitter)="handleLogin()"
+    (actionBtnEmitter)="handleNavigateToSignUpPage()"
 >
 
     <div class="login w-100 gap-2">
@@ -34,18 +40,6 @@
             </div>
     
         </form>
-
-        <div class="login__actions d-flex flex-column items-end">
-            <button class="login__actions-btn w-100" (click)="handleLogin()">Log in</button>
-
-            <p>
-                Não tem conta? 
-                <button (click)="navigateToSignUpPage()">
-                    Cadastre-se!
-                </button>
-            </p>
-
-        </div>
     </div>
     
     

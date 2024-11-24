@@ -6,6 +6,10 @@ export const appRoutes: Route[] = [
     {
         path: '',
         pathMatch: 'full',
+        redirectTo: 'login',
+    },
+    {
+        path: 'login',
         loadComponent: () => import('./pages/login/login.component').then(c => c.LoginComponent)
     },
     {

@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     alert(JSON.stringify(rawValue));
   }
 
-  protected navigateToSignUpPage = () => {
+  protected handleNavigateToSignUpPage = () => {
     this.router.navigateByUrl('/cadastro')
   }
 }

@@ -4,6 +4,7 @@ import { AuthTemplateComponent } from "../../ui/auth-template/auth-template.comp
 import { FORMS_MODULE } from '../../global/modules/forms-module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../../global/validations/auth-validations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,9 @@ import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../../global/validations/
 export class SignUpComponent implements OnInit {
 
   protected form!: FormGroup;
+
   private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.initForm();
@@ -40,5 +43,9 @@ export class SignUpComponent implements OnInit {
     
     const newUser = this.form.getRawValue();
     alert(JSON.stringify(newUser));
+  }
+
+  protected handleBackToLogin = () => {
+    this.router.navigateByUrl('/login')
   }
 }
