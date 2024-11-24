@@ -59,4 +59,13 @@
         font-weight: 600;
         position: relative;
     }
+
+    &__empty {
+        font-weight: 500;
+
+        &--gray {
+            font-weight: 400;
+            color: var(--text-color-gray);
+        }
+    }
 }
