@@ -43,7 +43,8 @@ export class ProfileComponent implements OnInit {
     },
   ];
 
-  protected skills: string[] = ["teste", 'angular', 'xablu'];
+  protected selectedPhotoFile = 'assets/default-user.png';
+  protected skills: string[] = [];
   protected bio = '';
 
   protected isEditingInfos = false;
@@ -153,5 +154,9 @@ export class ProfileComponent implements OnInit {
         console.log('put_user_error: ', put_user_error);
       }
     })
+  }
+
+  protected onPhotoUpload = (event: Event) => {
+    this.selectedPhotoFile = 'assets/perfil.png';
   }
 }

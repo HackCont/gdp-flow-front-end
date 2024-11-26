@@ -46,6 +46,7 @@ export class TimelineComponent {
 
       // this.onPostMoment(momentInfos);
       this.timelineService.lastAddedMoment$.next(momentInfos);
+      this.form.reset();
     }
   }
 

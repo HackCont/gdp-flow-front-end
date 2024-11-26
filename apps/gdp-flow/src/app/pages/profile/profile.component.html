@@ -7,10 +7,11 @@
     <div class="profile-main__container">
         <div class="profile-main__header">
             <div class="profile-main__group-row">
-                <img src="assets/perfil.png" alt="Imagem de perfil">
+                <img [src]="selectedPhotoFile" alt="Imagem de perfil">
 
                 <div class="profile-main__group">
                     <button class="button">
+                        <input type="file" (change)="onPhotoUpload($event)">
                         Upload da foto
                     </button>
                     <p>Formatos JPG ou PNG recomendados</p>
@@ -59,13 +60,16 @@
                 ></app-header-card>
 
                 <div class="profile-main__info-content profile-main__info-content--skills">
-                    <ul class="d-flex gap-1">
-                        @for (skill of skills; track $index) {
-                            <button class="button button--tag">
-                                {{skill}}
-                            </button>
-                        }
-                    </ul>
+                    @if (skills.length) {
+
+                        <ul class="d-flex gap-1">
+                            @for (skill of skills; track $index) {
+                                <button class="button button--tag">
+                                    {{skill}}
+                                </button>
+                            }
+                        </ul>
+                    }
 
                     @if (isEditingSkills) {
                         <input 

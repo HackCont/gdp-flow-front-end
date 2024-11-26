@@ -8,13 +8,13 @@
     
             <div class="timeline-list__content box">
                 <app-header-card
-                    title="Titulo da entrega"
-                    subTitle="01/04/2024"
+                    [title]="card.title"
+                    [subTitle]="card.data"
                     (editEmitter)="card.isEditing = !card.isEditing"
                 ></app-header-card>
         
                 <div class="timeline-list__description">
-                    Descrição
+                    {{card.description}}
                 </div>
             </div>
         </li>
