@@ -6,7 +6,9 @@
 
 <div class="timeline-main">
     <div class="timeline-main__content box">
-        <app-timeline-content></app-timeline-content>
+        <app-timeline-content
+            [timeLineMomentData]="momentData"
+        ></app-timeline-content>
     </div>
     
     <form class="timeline-main__form box" [formGroup]="form">

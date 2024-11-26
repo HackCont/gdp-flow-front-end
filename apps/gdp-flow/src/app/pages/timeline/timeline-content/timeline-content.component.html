@@ -1,7 +1,7 @@
 
 <ul class="timeline-list">
-    @for (card of timeLineData; track $index) {
-        <li class="timeline-list__card" [ngClass]="{'timeline-list__card--single': timeLineData.length === 1}">
+    @for (card of timeLineMomentData; track $index) {
+        <li class="timeline-list__card" [ngClass]="{'timeline-list__card--single': timeLineMomentData.length === 1}">
             <div class="timeline-list__count">
                 {{$index + 1}}
             </div>

@@ -21,4 +21,8 @@ export class TimelineService {
       userId: this.usersService.userData?.sub
     })
   }
+
+  public getMoment = (userId: string) => {
+    return this.http.get(`${API_URL}/moment/${userId}`);
+  }
 }

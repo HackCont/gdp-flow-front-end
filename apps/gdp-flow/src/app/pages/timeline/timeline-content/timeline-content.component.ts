@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { HeaderCardComponent } from '../../../ui/header-card/header-card.component';
 import { TimeLineData } from './timeline-content';
@@ -21,7 +21,7 @@ export class TimelineContentComponent implements OnInit {
   private timelineService = inject(TimelineService);
   private destroyRef = inject(DestroyRef);
 
-  protected timeLineData: TimeLineData[] = [];
+  @Input() timeLineMomentData: TimeLineData[] = [];
 
   ngOnInit(): void {
     this.checkLastMoment();
@@ -44,7 +44,7 @@ export class TimelineContentComponent implements OnInit {
   }
 
   private addLastMoment = (moment: TimelineMoment) => {
-    this.timeLineData.push(moment)
+    this.timeLineMomentData.push(moment)
     
   }
 }
